@@ -1,5 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -12,19 +13,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Sunflower:300,500,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/flexboxgrid.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'core/css/flexboxgrid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
     <title>JODA Propiedades</title>
 </head>
 
 <body>
 
     <!-- HEADER -->
-
-    <header class="row " id="subir-al-cielo">
+    <header class="row" id="subir-al-cielo">
 
         <div class="col-xs-12 col-sm-5 centrar-logo center-xs">
-            <a href="index.html"> <img src="img/logo.png" alt="Logo"> </a>
+            <a href="{% url 'home'%}"> <img src="{% static 'core/img/logo.png' %}" alt="Logo"> </a>
         </div>
 
         <div class="col-sm-3 ajustarIcon hidden-xs ">
@@ -56,72 +56,66 @@
         <div class="menu col-xs-12">
             <input type="checkbox" id="btn_menu">
             <label for="btn_menu">     
-                        <i class="fas fa-bars" id="bars"></i>                    
-                        <p id="title_menu">Menu</p>
-                    </label>
+                <i class="fas fa-bars" id="bars"></i>                    
+                <p id="title_menu">Menú</p>
+            </label>
             <div>
             </div>
 
             <nav class="sub_menu">
 
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="quienes-somos.html">¿Quienes somos?</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li class="hidden-lg hidden-md"><a href="casas.html">Casas</a></li>
-                    <li class="hidden-lg hidden-md"><a href="departamento.html">Departamentos</a></li>
-                    <li class="hidden-lg hidden-md"><a href="terrenos.html">Terrenos</a></li>
-                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="{% url 'home'%}">Inicio</a></li>
+                    <li><a href="{% url 'quienes_somos'%}">¿Quienes somos?</a></li>
+                    <li><a href="{% url 'contacto'%}">Contacto</a></li>
+                    <li class="hidden-lg hidden-md"><a href="{% url 'casas'%}">Casas</a></li>
+                    <li class="hidden-lg hidden-md"><a href="{% url 'deptos'%}">Departamentos</a></li>
+                    <li class="hidden-lg hidden-md"><a href="{% url 'terrenos'%}">Terrenos</a></li>
+                    <li><a href="{% url 'galeria'%}">Galeria</a></li>
+
 
                 </ul>
             </nav>
         </div>
     </section>
 
-    <!-- CONTENIDO -->
+
     <section class="main">
         <div class="row">
 
             <section class="col-md-9">
 
-                <article class="post clearfix">
-                    <img class="thumb pull-left img-thumbnail" src="img/casa2.jpg" alt="">
-
-                    <h2 class="post-title">
-                        Casa Limache
-                    </h2>
-                    <p class="post-contenido text-justify">
-                        Muy buena casa de dos pisos, barrio residencial de Limache. Terreno 600 metros, construídos 195. Primer piso, amplio living y comedor con bow window vigas a la vista de roble, ventanas de madera laurel, muy iluminado, bosca, piso de cerámica, 2 dormitorios
-                        2 baños, closet para ropa blanca. Segundo piso, 2 dormitorios uno en suite, dos baños, pasillo abalconado, piso flotante y alfombra en dormitorios. Amplia cocina amoblada con comedor de diario, lavadero y para planchar, leñera,
-                        quincho, horno de barro, bodeguita, canil, terraza techada. Jardín formado, piscina con filtro, 7 cámaras de vigilancia interior y exterior. Estacionamiento techado para dos autos.
-                    </p>
-                    <div class="contenedor-botones">
-
-                        <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-dpto-index"></span></a>
+                <form action="https://formspree.io/lobos.joaquin@hotmail.com" method="post" onsubmit="return validarFormulario()">
+                    <div id="tit_form">
+                        <h1>Formulario de Contacto</h1>
                     </div>
-                </article>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese Nombre" onblur="validarNombre();">
+                    <input type="text" id="mail" name="correo" placeholder="Ingrese Correo" onblur="validarCorreo();">
+                    <input type="number" id="telefono" name="telefono" placeholder="Ingrese Teléfono" onblur="validarTelefono();">
+                    <textarea name="mensaje" id="mensaje" placeholder="Escriba su Mensaje" cols="30" rows="10" onblur="validarMensaje();"></textarea>
+                    <input class="btn btn-danger" type="submit" value="Enviar">
+                </form>
 
 
 
 
             </section>
 
-            <!-- ASIDE -->
+           <!-- ASIDE -->
             <aside class="col-md-3 hidden-xs hidden-sm">
                 <h3>También puedes ver:</h3>
                 <div class="list-group ">
-                    <a href="casas.html" class="list-group-item">Casas</a>
-                    <a href="departamento.html" class="list-group-item ">Departamentos</a>
-                    <a href="terrenos.html" class="list-group-item ">Terrenos</a>
-
+                    <a href="{% url 'casas'%}" class="list-group-item">Casas</a>
+                    <a href="{% url 'deptos'%}" class="list-group-item ">Departamentos</a>
+                    <a href="{% url 'terrenos'%}" class="list-group-item ">Terrenos</a>
                 </div>
 
                 <h3>Nuevos Proyectos:</h3>
-                <img class="foto img-thumbnail" src="img/proyect1.jpg" alt="Foto Aside">
+                <img class="foto img-thumbnail" src="{% static 'core/img/proyect1.jpg' %}" alt="Foto Aside">
                 <br>
-                <img class="foto img-thumbnail" src="img/proyect2.jpg" alt="Foto Aside #2">
+                <img class="foto img-thumbnail" src="{% static 'core/img/proyect2.jpg' %}" alt="Foto Aside #2">
                 <br>
-                <img class="foto img-thumbnail" src="img/proyect3.jpg" alt="Foto Aside #3">
+                <img class="foto img-thumbnail" src="{% static 'core/img/proyect3.jpg' %}" alt="Foto Aside #3">
             </aside>
 
         </div>
@@ -130,8 +124,11 @@
 
 
 
+
     <!-- FOOTER -->
     <footer class="row middle-xs arround-xs">
+
+
 
         <!-- OPCIONES FOOTER -->
         <div class="col-xs-12 col-sm-4 ">
@@ -150,25 +147,25 @@
         <!-- RRSS -->
         <div class="col-xs-12 col-sm-4 ">
             <div class="con_rrss">
-                <div class=" centrarImg ">
-                    <a href="http://www.instagram.com" target="_blank"><img class="rrss" src="img/instagram.png" alt="Instagram"></a>
+                <div class=" centrarImg">
+                    <a href="http://www.instagram.com" target="_blank"><img class="rrss" src="{% static 'core/img/instagram.png' %}" alt="Instagram"></a>
                 </div>
                 <div class="centrarImg ">
-                    <a href="https://www.facebook.com" target="_blank"><img class="rrss" src="img/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.facebook.com" target="_blank"><img class="rrss" src="{% static 'core/img/facebook.png' %}" alt="Facebook"></a>
                 </div>
                 <div class="centrarImg ">
 
-                    <a href="mailto:jyd-future@gmail.com"><img class="rrss" src="img/arroba.png" alt="Correo"></a>
+                    <a href="mailto:jyd-future@gmail.com"><img class="rrss" src="{% static 'core/img/arroba.png' %}" alt="Correo"></a>
                 </div>
                 <div class="centrarImg ">
-                    <a href="tel:+56977665544"><img class="rrss" src="img/hot-line.png" alt="Teléfono"></a>
+                    <a href="tel:+56977665544"><img class="rrss" src="{% static 'core/img/hot-line.png' %}" alt="Teléfono"></a>
                 </div>
             </div>
         </div>
 
         <!-- LOGO FOOTER -->
         <div class="col-xs-12 col-sm-4 logo-foot">
-            <a href="#"><img src="img/logo.png" alt="Logo" class="logo-pxx"></a>
+            <img src="{% static 'core/img/logo.png' %}" alt="Logo" class="logo-pxx">
 
         </div>
         <a href="#subir-al-cielo" class="up scrollup">
@@ -176,9 +173,10 @@
         </a>
 
 
+
     </footer>
-    <script src="js/subir-al-cielo.js"></script>
-    <script src="js/uf.js"></script>
+    <script src="{% static 'core/js/subir-al-cielo.js' %}"></script>
+    <script src="{% static 'core/js/uf.js' %}"></script>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,21 +13,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Sunflower:300,500,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/flexboxgrid.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'core/css/flexboxgrid.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
     <title>JODA Propiedades</title>
 </head>
 
 <body>
 
     <!-- HEADER -->
-    <h1>Hola que tal</h1>
-    <h2>Soy el chico de las poesias</h2>
-    <h3>Soy otra rama del sistema</h3>
     <header class="row" id="subir-al-cielo">
 
         <div class="col-xs-12 col-sm-5 centrar-logo center-xs">
-            <a href="index.html"> <img src="img/logo.png" alt="Logo"> </a>
+            <a href="{% url 'home'%}"> <img src="{% static 'core/img/logo.png' %}" alt="Logo"> </a>
         </div>
 
         <div class="col-sm-3 ajustarIcon hidden-xs ">
@@ -67,13 +65,13 @@
             <nav class="sub_menu">
 
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="quienes-somos.html">¿Quienes somos?</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li class="hidden-lg hidden-md"><a href="casas.html">Casas</a></li>
-                    <li class="hidden-lg hidden-md"><a href="departamento.html">Departamentos</a></li>
-                    <li class="hidden-lg hidden-md"><a href="terrenos.html">Terrenos</a></li>
-                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="{% url 'home'%}">Inicio</a></li>
+                    <li><a href="{% url 'quienes_somos'%}">¿Quienes somos?</a></li>
+                    <li><a href="{% url 'contacto'%}">Contacto</a></li>
+                    <li class="hidden-lg hidden-md"><a href="{% url 'casas'%}">Casas</a></li>
+                    <li class="hidden-lg hidden-md"><a href="{% url 'deptos'%}">Departamentos</a></li>
+                    <li class="hidden-lg hidden-md"><a href="{% url 'terrenos'%}">Terrenos</a></li>
+                    <li><a href="{% url 'galeria'%}">Galeria</a></li>
 
 
                 </ul>
@@ -96,7 +94,7 @@
                 <div class="carousel-inner" role="listbox">
 
                     <div class="item active">
-                        <img src="img/2a.jpg" class="img-responsive" alt="1">
+                        <img src="{% static 'core/img/2a.jpg' %}" class="img-responsive" alt="1">
                         <div class="carousel-caption">
                             <h3>Venta y Arriendo de Casas</h3>
 
@@ -104,7 +102,7 @@
                     </div>
 
                     <div class="item">
-                        <img src="img/3a.jpg" class="img-responsive" alt="2">
+                        <img src="{% static 'core/img/3a.jpg' %}" class="img-responsive" alt="2">
                         <div class="carousel-caption">
                             <h3>Arriendo de Departamentos </h3>
 
@@ -112,7 +110,7 @@
                     </div>
 
                     <div class="item">
-                        <img src="img/4a.jpg" class="img-responsive" alt="3">
+                        <img src="{% static 'core/img/4a.jpg' %}" class="img-responsive" alt="3">
                         <div class="carousel-caption">
                             <h3>Terrenos en Venta</h3>
 
@@ -145,7 +143,7 @@
 
                 <article class="post clearfix">
 
-                    <img class="thumb pull-left img-thumbnail" src="img/depto2.jpg" alt="">
+                    <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/depto2.jpg' %}" alt="">
 
                     <h2 class="post-title">
                         Departamento Limache
@@ -154,7 +152,7 @@
                         Departamento nuevo en San Francisco de Limache Condominio cerrado, ubicado en Segundo Piso, living comedor, cocina americana amoblada, loggia, 3 dormitorios el principal en suite, 2 baños completos, cerámica en piso de living cocina y baños, dormitorios...
                     </p>
                     <div class="contenedor-botones">
-                        <a href="dpto-limache.html" class="btn btn-primary">Ver más</a>
+                        <a href="{% url 'depto_limache'%}" class="btn btn-primary">Ver más</a>
                         <a href="#" class="btn btn-success">Arrendar <span class="badge" id="uf-casa-index"></span></a>
 
                     </div>
@@ -162,7 +160,7 @@
 
                 <article class="post clearfix">
 
-                    <img class="thumb pull-left img-thumbnail" src="img/casa2.jpg" alt="">
+                    <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/casa2.jpg' %}" alt="">
 
                     <h2 class="post-title">
                         Casa Limache
@@ -171,14 +169,14 @@
                         Muy buena casa de dos pisos, barrio residencial de Limache. Terreno 600 metros, construídos 195. Primer piso, amplio living y comedor con bow window vigas a la vista de roble, ventanas de madera laurel, muy iluminado, bosca, piso de cerámica, 2 dormitorios...
                     </p>
                     <div class="contenedor-botones">
-                        <a href="casa-limache.html" class="btn btn-primary">Ver más</a>
+                        <a href="{% url 'casa_limache'%}" class="btn btn-primary">Ver más</a>
                         <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-dpto-index"></span></a>
 
                     </div>
                 </article>
 
                 <article class="post clearfix">
-                    <img class="thumb pull-left img-thumbnail" src="img/terr1.jpg" alt="">
+                    <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/terr1.jpg' %}" alt="">
 
                     <h2 class="post-title">
                         Terreno Limache
@@ -187,7 +185,7 @@
                         Terreno comercial, terreno 7.748 m2 Construídos: casa-habitación 143m2 y Dos Bodegas 156m2 y 126 m2 estacionamientos techados 40m2...
                     </p>
                     <div class="contenedor-botones">
-                        <a href="terreno-limache.html" class="btn btn-primary">Ver más</a>
+                        <a href="{% url 'terreno_limache'%}" class="btn btn-primary">Ver más</a>
                         <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-terr-index"></span></a>
 
                     </div>
@@ -199,18 +197,18 @@
             <aside class="col-md-3 hidden-xs hidden-sm">
                 <h3>También puedes ver:</h3>
                 <div class="list-group ">
-                    <a href="casas.html" class="list-group-item">Casas</a>
-                    <a href="departamento.html" class="list-group-item ">Departamentos</a>
-                    <a href="terrenos.html" class="list-group-item ">Terrenos</a>
+                    <a href="{% url 'casas'%}" class="list-group-item">Casas</a>
+                    <a href="{% url 'deptos'%}" class="list-group-item ">Departamentos</a>
+                    <a href="{% url 'terrenos'%}" class="list-group-item ">Terrenos</a>
 
                 </div>
 
                 <h3>Nuevos Proyectos:</h3>
-                <img class="foto img-thumbnail" src="img/proyect1.jpg" alt="Foto Aside">
+                <img class="foto img-thumbnail" src="{% static 'core/img/proyect1.jpg' %}" alt="Foto Aside">
                 <br>
-                <img class="foto img-thumbnail" src="img/proyect2.jpg" alt="Foto Aside #2">
+                <img class="foto img-thumbnail" src="{% static 'core/img/proyect2.jpg' %}" alt="Foto Aside #2">
                 <br>
-                <img class="foto img-thumbnail" src="img/proyect3.jpg" alt="Foto Aside #3">
+                <img class="foto img-thumbnail" src="{% static 'core/img/proyect3.jpg' %}" alt="Foto Aside #3">
             </aside>
 
         </div>
@@ -242,24 +240,24 @@
         <div class="col-xs-12 col-sm-4 ">
             <div class="con_rrss">
                 <div class=" centrarImg">
-                    <a href="http://www.instagram.com" target="_blank"><img class="rrss" src="img/instagram.png" alt="Instagram"></a>
+                    <a href="http://www.instagram.com" target="_blank"><img class="rrss" src="{% static 'core/img/instagram.png' %}" alt="Instagram"></a>
                 </div>
                 <div class="centrarImg ">
-                    <a href="https://www.facebook.com" target="_blank"><img class="rrss" src="img/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.facebook.com" target="_blank"><img class="rrss" src="{% static 'core/img/facebook.png' %}" alt="Facebook"></a>
                 </div>
                 <div class="centrarImg ">
 
-                    <a href="mailto:jyd-future@gmail.com"><img class="rrss" src="img/arroba.png" alt="Correo"></a>
+                    <a href="mailto:jyd-future@gmail.com"><img class="rrss" src="{% static 'core/img/arroba.png' %}" alt="Correo"></a>
                 </div>
                 <div class="centrarImg ">
-                    <a href="tel:+56977665544"><img class="rrss" src="img/hot-line.png" alt="Teléfono"></a>
+                    <a href="tel:+56977665544"><img class="rrss" src="{% static 'core/img/hot-line.png' %}" alt="Teléfono"></a>
                 </div>
             </div>
         </div>
 
         <!-- LOGO FOOTER -->
         <div class="col-xs-12 col-sm-4 logo-foot">
-            <img src="img/logo.png" alt="Logo" class="logo-pxx">
+            <img src="{% static 'core/img/logo.png' %}" alt="Logo" class="logo-pxx">
 
         </div>
         <a href="#subir-al-cielo" class="up scrollup">
@@ -269,8 +267,8 @@
 
 
     </footer>
-    <script src="js/subir-al-cielo.js"></script>
-    <script src="js/uf.js"></script>
+    <script src="{% static 'core/js/subir-al-cielo.js' %}"></script>
+    <script src="{% static 'core/js/uf.js' %}"></script>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
