@@ -1,32 +1,33 @@
 from django.shortcuts import render
-
+from django.views.generic.base import TemplateView
 # Create your views here.
-def home(request):
-    return render(request, 'core/index.html', {})
 
-def casas(request):
-    return render(request, 'core/casas.html', {})
+class CasaLimachePageView(TemplateView):
+    template_name = "core/casa-limache.html"
 
-def depto(request):
-    return render(request, 'core/departamento.html', {})
+class CasasPageView(TemplateView):
+    template_name = "core/casas.html"
 
-def terrenos(request):
-    return render(request, 'core/terrenos.html', {})
+class ContactoPageView(TemplateView):
+    template_name = "core/contacto.html"
 
-def casa_limache(request):
-    return render(request, 'core/casa-limache.html', {})
+class DepartamentoPageView(TemplateView):
+    template_name = "core/departamento.html"
 
-def depto_limache(request):
-    return render(request, 'core/dpto-limache.html', {})
+class DeptoLimachePageView(TemplateView):
+    template_name = "core/depto-limache.html"
 
-def terreno_limache(request):
-    return render(request, 'core/terreno-limache.html', {})
+class GaleriaPageView(TemplateView):
+    template_name = "core/galeria.html"
 
-def quienes_somos(request):
-    return render(request, 'core/quienes-somos.html', {})
+class IndexPageView(TemplateView):
+    template_name = "core/index.html"
 
-def contacto(request):
-    return render(request, 'core/contacto.html', {})
+class QuienesSomosPageView(TemplateView):
+    template_name = "core/quienes-somos.html"
 
-def galeria(request):
-    return render(request, 'core/galeria.html', {})
+class TerrenoLimachePageView(TemplateView):
+    template_name = "core/terreno-limache.html"
+
+class TerrenosPageView(TemplateView):
+    template_name = "core/terrenos.html"
