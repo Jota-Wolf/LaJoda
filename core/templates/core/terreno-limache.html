@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/flexboxgrid.min.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
+
+{% block  content %}
+    <article class="post clearfix">
+        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/terr1.jpg' %}" alt="">
+
+        <h2 class="post-title">
+            Terreno Limache
+        </h2>
+        <p class="post-contenido text-justify">
+            Terreno comercial, terreno 7.748 m2 Construídos: casa-habitación 143m2 y Dos Bodegas 156m2 y 126 m2 estacionamientos techados 40m2. La casa tiene living comedor cocina americana, 3 dormitorios, dos baños y loggia grande. Agua Potable, red alcantarilado,
+                            luz agua potable.
+        </p>
+        <div class="contenedor-botones">
+            <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-terr-index"></span></a>
+        </div>
+    </article>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/flexboxgrid.min.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
+
+{% block  content %}
+    <article class="post clearfix">
+        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/casa2.jpg' %}" alt="">
+
+        <h2 class="post-title">
+            Casa Limache
+        </h2>
+        <p class="post-contenido text-justify">
+            Muy buena casa de dos pisos, barrio residencial de Limache. Terreno 600 metros, construídos 195. Primer piso, amplio living y comedor con bow window vigas a la vista de roble, ventanas de madera laurel, muy iluminado, bosca, piso de cerámica, 2 dormitorios
+            2 baños, closet para ropa blanca. Segundo piso, 2 dormitorios uno en suite, dos baños, pasillo abalconado, piso flotante y alfombra en dormitorios. Amplia cocina amoblada con comedor de diario, lavadero y para planchar, leñera,
+            quincho, horno de barro, bodeguita, canil, terraza techada. Jardín formado, piscina con filtro, 7 cámaras de vigilancia interior y exterior. Estacionamiento techado para dos autos.
+        </p>
+        <div class="contenedor-botones">
+            <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-dpto-index"></span></a>
+        </div>
+    </article>
+
+{% endblock content %}

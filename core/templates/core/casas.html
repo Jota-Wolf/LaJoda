@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/flexboxgrid.min.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
+
+{% block  content %}
+   
+      {% for casa in casas %}
+
+        <article class="post clearfix">
+
+        <div class="">      
+            <img class="thumb pull-left img-thumbnail" src="{{casa.imagen.url}}" alt="">        
+        </div>
+
+            <h2 class="post-title"><a href="">{{ casa.titulo }}</a></h2>
+            <p class="post-contenido text-justify">Descripcion          : {{ casa.descripcion|linebreaksbr }}</p>
+            <p class="post-contenido ">Direccion             : {{ casa.direccion }}</p>
+            <p class="post-contenido ">Ciudad                : {{ casa.ciudad }}</p>
+            <p class="post-contenido ">Cantidad Habitaciones : {{ casa.cant_habitaciones }}</p>
+            <p class="post-contenido ">Cantidad Baños        : {{ casa.cant_baños }}</p>
+            <p class="post-contenido ">Metros Cuadrados      : {{ casa.metros_2 }}</p>
+            {% if casa.patio is True %}
+            <p class="post-contenido">Patio : SI</p>
+            {% else %}
+            <p class="post-contenido">Patio : NO</p>
+            {% endif %}
+            
+
+                <div class="contenedor-botones">
+                    <a href="dpto-limache.html" class="btn btn-primary">Ver más</a>
+                    <a href="#" class="btn btn-success">{{casa.tipo_contacto}}<span class="badge" id="uf_casas"></span></a>
+                </div>
+                
+        </article>
+
+    {% endfor %}   
+
+{% endblock content %}
