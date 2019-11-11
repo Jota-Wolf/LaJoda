@@ -7,8 +7,17 @@
     }
     
     body {
-        font-family: 'Raleway', sans-serif;
-        background: #dfd9d9;
+        font-family: 'Droid', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        background: #ebe8e8;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Actor', sans-serif;
     }
     
     .logo-menu {
@@ -19,11 +28,10 @@
     .slide-style {
         box-shadow: 5px 5px 10px #76787a;
     }
-    
-    header {
+    /* header {
         background-color: #161616;
         color: #dfd9d9;
-    }
+    } */
     
     .centrarImg {
         width: 100%;
@@ -31,9 +39,9 @@
         justify-content: center;
     }
     
-    .centrar-logo a img {
-        width: 80px;
-        height: 80px;
+    .tamano-logo a img {
+        width: 70px;
+        height: 70px;
     }
     
     .ajustarIcon {
@@ -54,15 +62,11 @@
     }
     
     .textoIcon {
-        margin: 5px;
-        float: left;
-        width: 90%;
-        font-family: 'Sunflower', sans-serif;
+        margin: 20px;
     }
     /* Footer */
     
     footer {
-        background: #161616;
         color: #dfd9d9;
     }
     
@@ -87,6 +91,7 @@
         display: flex;
         margin: 10px 10px;
         padding: 20px;
+        text-decoration: none;
     }
     
     footer .nav a:hover {
@@ -101,8 +106,8 @@
     }
     
     .logo-pxx {
-        width: 150px;
-        height: 150px;
+        width: 20%;
+        height: 20%;
     }
     /* ---------------------------------------------- */
     
@@ -154,27 +159,13 @@
         cursor: pointer;
     }
     
-    .sub_menu {
-        z-index: 200;
-    }
-    
-    .sub_menu ul {
-        margin: 0;
-        list-style: none;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-    }
-    
     .sub_menu li a:hover {
         color: #ffffff;
     }
     
     .sub_menu li a {
-        display: block;
-        padding: 10px 30px;
-        color: #cabebe;
-        text-decoration: none;
+        padding: 10px 20px;
+        color: #ffffff;
     }
     
     @media only screen and (max-width:992px) {
@@ -243,8 +234,8 @@
     }
     
     .post .thumb {
-        margin-right: 10px;
-        width: 40%;
+        width: 100%;
+        height: 50%;
     }
     
     .post .thumb img {
@@ -333,4 +324,18 @@
     
     .exito {
         border: 2.5px solid #14af00;
+    }
+    
+    .tamano_img {
+        width: 100%;
+        height: 250px;
+    }
+    
+    .navbar-dark {
+        color: #ffffff;
+    }
+    
+    .tamano_detail {
+        width: 850px;
+        height: 400px;
     }

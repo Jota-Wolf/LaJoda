@@ -39,7 +39,7 @@ class Casa(models.Model):
     patio = models.BooleanField()
     tipo_contacto = models.CharField(max_length=10, choices=opciones)
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
+    published_date = models.DateTimeField(blank=True, null=True,default=timezone.now)
     destacado = models.BooleanField(blank=True, null=True)
 
     class Meta:
@@ -76,7 +76,7 @@ class Departamento(models.Model):
     metros_2 = models.DecimalField(max_digits=19, decimal_places=0)
     tipo_contacto = models.CharField(max_length=10, choices=opciones)
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
+    published_date = models.DateTimeField(blank=True, null=True,default=timezone.now)
     destacado = models.BooleanField(blank=True, null=True)
 
     class Meta:
@@ -110,7 +110,7 @@ class Terreno(models.Model):
     metros_2 = models.DecimalField(max_digits=19, decimal_places=0)
     tipo_contacto = models.CharField(max_length=10, choices=opciones)
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
+    published_date = models.DateTimeField(blank=True, null=True,default=timezone.now)
     destacado = models.BooleanField(blank=True, null=True)
 
     class Meta:
