@@ -58,52 +58,36 @@
 {% endblock destacados %}
 
 {% block content%}
-    <article class="post clearfix">
+   
+    {% for casa in casas %}
+        {% if casa.destacado %}
+            <article class="post clearfix">
 
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/depto2.jpg' %}" alt="">
+            <div class="">      
+                <img class="thumb pull-left img-thumbnail" src="{{casa.imagen.url}}" alt="">        
+            </div>
 
-        <h2 class="post-title">
-            Departamento Limache
-        </h2>
-        <p class="post-contenido text-justify">
-            Departamento nuevo en San Francisco de Limache Condominio cerrado, ubicado en Segundo Piso, living comedor, cocina americana amoblada, loggia, 3 dormitorios el principal en suite, 2 baños completos, cerámica en piso de living cocina y baños, dormitorios...
-        </p>
-        <div class="contenedor-botones">
-            <a href="{% url 'depto_limache'%}" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Arrendar <span class="badge" id="uf-casa-index"></span></a>
+                <h2 class="post-title"><a href="">{{ casa.titulo }}</a></h2>
+                <p class="post-contenido text-justify">Descripcion          : {{ casa.descripcion|linebreaksbr }}</p>
+                <p class="post-contenido ">Direccion             : {{ casa.direccion }}</p>
+                <p class="post-contenido ">Ciudad                : {{ casa.ciudad }}</p>
+                <p class="post-contenido ">Cantidad Habitaciones : {{ casa.cant_habitaciones }}</p>
+                <p class="post-contenido ">Cantidad Baños        : {{ casa.cant_baños }}</p>
+                <p class="post-contenido ">Metros Cuadrados      : {{ casa.metros_2 }}</p>
+                {% if casa.patio is True %}
+                <p class="post-contenido">Patio : SI</p>
+                {% else %}
+                <p class="post-contenido">Patio : NO</p>
+                {% endif %}
+                
 
-        </div>
-    </article>
-
-    <article class="post clearfix">
-
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/casa2.jpg' %}" alt="">
-
-        <h2 class="post-title">
-            Casa Limache
-        </h2>
-        <p class="post-contenido text-justify">
-            Muy buena casa de dos pisos, barrio residencial de Limache. Terreno 600 metros, construídos 195. Primer piso, amplio living y comedor con bow window vigas a la vista de roble, ventanas de madera laurel, muy iluminado, bosca, piso de cerámica, 2 dormitorios...
-        </p>
-        <div class="contenedor-botones">
-            <a href="{% url 'casa_limache'%}" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-dpto-index"></span></a>
-
-        </div>
-    </article>
-
-    <article class="post clearfix">
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/terr1.jpg' %}" alt="">
-
-        <h2 class="post-title">
-        Terreno Limache
-        </h2>
-        <p class="post-contenido text-justify">
-            Terreno comercial, terreno 7.748 m2 Construídos: casa-habitación 143m2 y Dos Bodegas 156m2 y 126 m2 estacionamientos techados 40m2...
-        </p>
-        <div class="contenedor-botones">
-            <a href="{% url 'terreno_limache'%}" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-terr-index"></span></a>
-        </div>
-    </article>
+                    <div class="contenedor-botones">
+                        <a href="dpto-limache.html" class="btn btn-primary">Ver más</a>
+                        <a href="#" class="btn btn-success">{{casa.tipo_contacto}}<span class="badge" id="uf_casas"></span></a>
+                    </div>
+                    
+            </article>
+        {% endif %}
+    {% endfor %}  
+    
 {%  endblock content %}

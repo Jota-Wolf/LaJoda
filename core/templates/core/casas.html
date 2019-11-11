@@ -6,58 +6,35 @@
 
 {% block  content %}
    
-    <article class="post clearfix">
+      {% for casa in casas %}
 
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/casa7.jpg' %}" alt="">
+        <article class="post clearfix">
 
-        <h2 class="post-title">
-            Linda casa Belloto
-        </h2>
-        <p class="post-contenido text-justify">
-            Cómoda y espaciosa casa nueva ubicada en Conjunto Galilea, movilización cercana. La casa cuenta con dos plantas, en primer piso, dispone de un living y separado el comedor, dormitorio matrimonial en suite. En segunda planta encontramos dos amplios dormitorios
-            con una salita de estar. La casa se entrega con lámparas y barras para el cortinaje. Protecciones en todas las ventanas, reja alta. Entrada vehicular. El arriendo es sin mueble, las fotografías de las habitaciones amobladas, son
-            solo referenciales para apreciar de mejor forma los espacios.
-        </p>
-        <div class="contenedor-botones">
-            <a href="#" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Arrendar <span class="badge" id="uf-casa-1"></span></a>
+        <div class="">      
+            <img class="thumb pull-left img-thumbnail" src="{{casa.imagen.url}}" alt="">        
         </div>
-    </article>
 
-    <article class="post clearfix">
+            <h2 class="post-title"><a href="">{{ casa.titulo }}</a></h2>
+            <p class="post-contenido text-justify">Descripcion          : {{ casa.descripcion|linebreaksbr }}</p>
+            <p class="post-contenido ">Direccion             : {{ casa.direccion }}</p>
+            <p class="post-contenido ">Ciudad                : {{ casa.ciudad }}</p>
+            <p class="post-contenido ">Cantidad Habitaciones : {{ casa.cant_habitaciones }}</p>
+            <p class="post-contenido ">Cantidad Baños        : {{ casa.cant_baños }}</p>
+            <p class="post-contenido ">Metros Cuadrados      : {{ casa.metros_2 }}</p>
+            {% if casa.patio is True %}
+            <p class="post-contenido">Patio : SI</p>
+            {% else %}
+            <p class="post-contenido">Patio : NO</p>
+            {% endif %}
+            
 
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/casa1.jpg' %}" alt="">
+                <div class="contenedor-botones">
+                    <a href="dpto-limache.html" class="btn btn-primary">Ver más</a>
+                    <a href="#" class="btn btn-success">{{casa.tipo_contacto}}<span class="badge" id="uf_casas"></span></a>
+                </div>
+                
+        </article>
 
-        <h2 class="post-title">
-            Casa Viña del Mar
-        </h2>
-        <p class="post-contenido text-justify">
-            Buena casa de dos pisos pareada, recién pintada, entrega inmediata. Consta: Primer piso, hall entrada, Living comedor amplio, cocina amoblada. Segundo piso: tres dormitorios con closets, 1 baño completo. Antejardín y jardín trasero con pasto y algunas
-            plantitas, estacionamiento para dos autos. Atrás tiene un depto con pieza de servicio, baño, lavadero y bodega que puede transformarse en depto de alojados. Instalación para dos balones de 45 kgs.
-        </p>
-        <div class="contenedor-botones">
-            <a href="#" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Arrendar <span class="badge" id="uf-casa-2"></span></a>
-        </div>
-    </article>
+    {% endfor %}   
 
-    <article class="post clearfix">
-
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/casa8.jpg' %}" alt="">
-
-        <h2 class="post-title">
-            Gran casa Limache
-        </h2>
-        <p class="post-contenido text-justify">
-            Ubicada en uno de los mejores condominios de Limache, tanto por su excelente nivel de construcción, seguridad y tranquilidad. Este Condominio cuenta con un amplio y equipado salón para eventos, quincho, piscina de adultos y niños, cuenta con pequeño parque
-            con especies adultas y muy bien mantenido, lo que no aumenta los gastos comunes, ya que dispone de un pozo propio para el riego de las áreas verdes. La propiedad en venta en este excelente entorno, es una amplia casa sólida, estilo
-            colonial con cubierta de tejas, y lleno de delicados detalles de muy buen gusto que aprovechan cada espacio de la casa para resaltarlo. El inmueble cuenta con un gran living con chimenea, con una altura libre interior, muy por
-            sobre el estándar de las edificaciones actuales. Un generoso espacio para el amplio comedor, 4 dormitorios, que se calefaccionan igualmente con estufa a desde el pasillo central, cuenta con numerosos closets, el dormitorio matrimonial
-            se encuentra en suite.
-        </p>
-        <div class="contenedor-botones">
-            <a href="#" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Arrendar <span class="badge" id="uf-casa-3"></span></a>
-        </div>
-    </article> 
 {% endblock content %}

@@ -21,8 +21,8 @@ class Cliente(models.Model):
 class Casa(models.Model):
 
     opciones = [
-    ('V', 'Venta'),
-    ('C', 'Compra')
+    ('Venta', 'Venta'),
+    ('Arriendo', 'Arriendo')
     ]
 
     id = models.AutoField(primary_key=True)
@@ -32,14 +32,15 @@ class Casa(models.Model):
     imagen = models.ImageField(upload_to='Casas')
     direccion = models.CharField(max_length=200)
     ciudad = models.CharField(max_length=200)
-    precio = models.DecimalField(max_digits=19, decimal_places=3)
+    precio = models.DecimalField(max_digits=19, decimal_places=0)
     cant_habitaciones = models.IntegerField(blank=False, null=False)
     cant_baños = models.IntegerField(blank=False, null=False)
-    metros_2 = models.DecimalField(max_digits=19, decimal_places=3)
+    metros_2 = models.DecimalField(max_digits=19, decimal_places=0)
     patio = models.BooleanField()
-    tipo_contacto = models.CharField(max_length=1, choices=opciones)
+    tipo_contacto = models.CharField(max_length=10, choices=opciones)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    destacado = models.BooleanField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Casa"
@@ -57,8 +58,8 @@ class Casa(models.Model):
 class Departamento(models.Model):
 
     opciones = [
-    ('V', 'Venta'),
-    ('C', 'Compra')
+    ('Venta', 'Venta'),
+    ('Arriendo', 'Arriendo')
     ]
 
     id = models.AutoField(primary_key=True)
@@ -69,13 +70,14 @@ class Departamento(models.Model):
     direccion = models.CharField(max_length=200)
     num_piso = models.IntegerField(max_length=2, blank=False, null=False)
     ciudad = models.CharField(max_length=200)
-    precio = models.DecimalField(max_digits=19, decimal_places=3)
+    precio = models.DecimalField(max_digits=19, decimal_places=0)
     cant_habitaciones = models.IntegerField(blank=False, null=False)
     cant_baños = models.IntegerField(blank=False, null=False)
-    metros_2 = models.DecimalField(max_digits=19, decimal_places=3)
-    tipo_contacto = models.CharField(max_length=1, choices=opciones)
+    metros_2 = models.DecimalField(max_digits=19, decimal_places=0)
+    tipo_contacto = models.CharField(max_length=10, choices=opciones)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    destacado = models.BooleanField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Departamento"
@@ -93,8 +95,8 @@ class Departamento(models.Model):
 class Terreno(models.Model):
 
     opciones = [
-    ('V', 'Venta'),
-    ('C', 'Compra')
+    ('Venta', 'Venta'),
+    ('Arriendo', 'Arriendo')
     ]
 
     id = models.AutoField(primary_key=True)
@@ -104,11 +106,12 @@ class Terreno(models.Model):
     imagen = models.ImageField(upload_to='Terrenos')
     direccion = models.CharField(max_length=200)
     ciudad = models.CharField(max_length=200)
-    precio = models.DecimalField(max_digits=19, decimal_places=3)
-    metros_2 = models.DecimalField(max_digits=19, decimal_places=3)
-    tipo_contacto = models.CharField(max_length=1, choices=opciones)
+    precio = models.DecimalField(max_digits=19, decimal_places=0)
+    metros_2 = models.DecimalField(max_digits=19, decimal_places=0)
+    tipo_contacto = models.CharField(max_length=10, choices=opciones)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    destacado = models.BooleanField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Terreno"
