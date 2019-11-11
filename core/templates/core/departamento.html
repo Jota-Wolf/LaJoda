@@ -6,58 +6,40 @@
 
 {% block  content %}
     
-    <article class="post clearfix">
+    {% for depto in departamento_list %}
 
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/dpto2.jpg' %}" alt="">
+        <div class="col-sm-6 col-md-4 mt-3">
+			<div class="card mb-4">
+				<img src="{{depto.imagen.url}}" class="card-img-top tamano_img" alt="">
+				<div class="card-body">
+					<h2 class="card-text">{{ depto.titulo|linebreaksbr }}</h2>
+                    <p class="card-text">Dirección: {{ depto.direccion }}</p>
+                    <p class="card-text">Piso N°: {{ depto.num_piso }}</p>
+                    <p class="card-text">Ciudad: {{ depto.ciudad }}</p>
+                    <p class="card-text">Habitaciones: {{ depto.cant_habitaciones }}</p>
+                    <p class="card-text">Baños: {{ depto.cant_baños }}</p>
+                    <p class="card-text">Metros2: {{ depto.metros_2 }}</p>
+                    
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="btn-group">
+							<a href="{% url 'depto' depto.id %}" class="btn btn-sm btn-outline-secondary">Ver Más</a>
+							<button class="btn btn-sm btn-outline-secondary">{{depto.tipo_contacto}}</button>
+                            {% if request.user.is_staff %}
+                                <a href="{% url 'depto_update' depto.id %}" class="btn btn-sm btn-outline-primary">Editar</a>
+                                <a href="{% url 'depto_delete' depto.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            {% endif %}
+						</div>
+                        {% if not request.user.is_staff %}
+                            <small class="text-muted">{{ depto.published_date }}</small>
+                        {% endif %}
+					</div>
+                    {% if  request.user.is_staff %}
+                        <small class="text-muted">{{ depto.published_date }}</small>
+                    {% endif %}
+				</div>
+			</div>
+		</div>
 
-        <h2 class="post-title">
-            Excelente Departamento
-        </h2>
-        <p class="post-contenido text-justify">
-            Departamento cuenta con living comedor con cubre piso, cocina tipo americana amoblada, piso de cerámica; dormitorio mediano con capacidad para cama de dos plazas, cubre piso y closet; baño completo con tina, piso y paredes de cerámica y un estacionamiento.
-            El condominio posee accesos controlados, quincho, lavandería, sala multiuso, gimnasio, locomoción a la puerta, a pasos de supermercado y excelente conectividad con ruta sesenta y ocho. Gastos comunes de veinticinco mil pesos.
-        </p>
-        <div class="contenedor-botones">
-            <a href="#" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-dpto-1"></span></a>
-        </div>
-    </article>
-
-    <article class="post clearfix">
-
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/dpto3.jpg' %}" alt="">
-
-        <h2 class="post-title">
-            Departamento Quilpue
-        </h2>
-        <p class="post-contenido text-justify">
-            Departamento en cuarto piso, ubicado en condominio seguro con acceso controlado 24 horas, portón eléctrico, rondín de seguridad, estacionamiento propio. Dispone de Living comedor en piso de cerámico con acceso terraza orientación sur, cocina amoblada
-            equipada con encimera y horno eléctrico, en pasillo baño completo. Dormitorio Principal con capacidad para cama de dos plazas, siguientes dormitorios con capacidad de cama 1 ½ plaza, todos en superficie de alfombra. Locomoción
-            en salida de condominio, cercanía a centro comercial Belloto, colegios y feria.
-
-        </p>
-        <div class="contenedor-botones">
-            <a href="#" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-dpto-2"></span></a>
-        </div>
-    </article>
-
-    <article class="post clearfix">
-
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/dpto4.jpg' %}" alt="">
-
-        <h2 class="post-title">
-            Departamento Valparaiso
-        </h2>
-        <p class="post-contenido text-justify">
-            Departamento en tercer piso, remodelado perfil inversionista, con proyección para Renta de perfil Estudiantes Universitarios, al situarse a escasos metros de Universidad Católica y Universidad Valparaíso e institutos, locomoción a la puerta, supermercados
-            y Estación Metro. Dispone de dormitorios en superficie cerámica, dos dormitorios con capacidad de cama de dos plazas, otro para cama 1 ½ y el siguiente de una plaza respectivamente, baño completo, amplia cocina con espacio para
-            comedor. Acceso controlado por conserje, ascensor y gas natural. Gastos comunes $65.000. Propiedad sin Deuda.
-        </p>
-        <div class="contenedor-botones">
-            <a href="#" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-dpto-3"></span></a>
-        </div>
-    </article>
+    {% endfor %}
 
 {% endblock content %}
