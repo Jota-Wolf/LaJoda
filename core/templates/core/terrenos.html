@@ -5,50 +5,35 @@
     <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
 
 {% block  content %}
-    <article class="post clearfix">
+   {% for terre in terreno_list %}
 
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/terr2.jpg' %}" alt="">
+        <div class="col-sm-6 col-md-4 mt-3">
+			<div class="card mb-4">
+				<img src="{{terre.imagen.url}}" class="card-img-top tamano_img" alt="">
+				<div class="card-body">
+					<h2 class="card-text">{{ terre.titulo|linebreaksbr }}</h2>
+                    <p class="card-text">Dirección: {{ terre.direccion }}</p>
+                    <p class="card-text">Ciudad: {{ terre.ciudad }}</p>
+                    <p class="card-text">Metros2: {{ terre.metros_2 }}</p>
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="btn-group">
+							<a href="{% url 'terre' terre.id %}" class="btn btn-sm btn-outline-secondary">Ver Más</a>
+							<button class="btn btn-sm btn-outline-secondary">{{terre.tipo_contacto}}</button>
+                            {% if request.user.is_staff %}
+                                <a href="{% url 'terreno_update' terre.id %}" class="btn btn-sm btn-outline-primary">Editar</a>
+                                <a href="{% url 'terreno_delete' terre.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                            {% endif %}
+						</div>
+                        {% if not request.user.is_staff %}
+                            <small class="text-muted">{{ terre.published_date }}</small>
+                        {% endif %}
+					</div>
+                   {% if  request.user.is_staff %}
+                        <small class="text-muted">{{ terre.published_date }}</small>
+                    {% endif %}
+				</div>
+			</div>
+		</div>
 
-        <h2> class="post-title"Parcela el Maqui
-        </h2>
-        <p> class="post-contenido text-justify"Hermosa parcela a orilla de camino asfaltado, vía a Tabolango. Parcela Nº2 con 63,33 metros de frente al camino, con leve pendiente, y una superficie total de 5.050 m2., ingreso directo desde camino público. La propiedad con rol independiente, se entregcon agua proveniente de pozo profundo ubicado en la misma parcelación, y un kit de energía solar fotovoltaica.
-        </p>
-        <div class="contenedor-botones">
-        <a> href="#" class="btn btn-primary">Ver más</a>
-        <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-terr-1"></span></a>
-        </div>
-    </article>
-
-    <article class="post clearfix">
-
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/terr3.jpg' %}" alt="">
-
-        <h2 class="post-title">
-            Terreno Olmué
-        </h2>
-        <p class="post-contenido text-justify">
-            Disponemos para la venta un céntrico terreno ubicado a la altura del Paradero 18 de Av. Eastman. Completamente plano y con 400 metros cuadrados de superficie con factibilidad a todos los servicios básicos. Cuenta con su Rol propio.
-        </p>
-        <div class="contenedor-botones">
-            <a href="#" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-terr-2"></span></a>
-        </div>
-    </article>
-
-    <article class="post clearfix">
-
-        <img class="thumb pull-left img-thumbnail" src="{% static 'core/img/terr4.jpg' %}" alt="">
-
-        <h2 class="post-title">
-            Terreno Viña del Mar
-        </h2>
-        <p class="post-contenido text-justify">
-            Terreno de 6.638 m2. de suelos planos que cuenta con agua potable, energía eléctrica y alcantarillado instalados en la propiedad. Ubicado en zona ZH2. Condiciones zona ZH2 según Plan Regulador Comunal. Usos permitidos: Vivienda, comercio, oficina, equipamiento,
-            talleres artesanales inofensivos y/o molestos, industrias y bodegas inofensivas, areas verdes y vialidad Condiciones de edificación: Porcentaje máximo de ocupación de suelo: 60% Sistema de agrupamiento: aislado, pareado y continuo.
-        </p>
-        <div class="contenedor-botones">
-            <a href="#" class="btn btn-primary">Ver más</a>
-            <a href="#" class="btn btn-success">Comprar <span class="badge" id="uf-terr-3"></span></a>
-        </div>
-    </article>
+    {% endfor %}
 {% endblock content %}
