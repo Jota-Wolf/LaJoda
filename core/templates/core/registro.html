@@ -1,0 +1,54 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/flexboxgrid.min.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
+
+{% block content %} 
+    <form action="">
+        <div id="tit_form">
+            <h1>Registro de usuario</h1>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 mb-3">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre">
+            </div>
+            <div class="col-12 col-sm-6 mb-3">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="rut">RUT <span class="text-muted">(Obligatorio)</span></label>
+            <input type="text" class="form-control" placeholder="12.345.678-9" name="rut">
+        </div>
+
+        <div class="mb-3">
+            <label for="telefono">Teléfono <span class="text-muted">(Obligatorio)</span></label>
+            <input type="text" class="form-control" placeholder="976543210" name="telefono">
+        </div>
+
+        <div class="mb-3">
+            <label for="correo">Correo <span class="text-muted">(Obligatorio)</span></label>
+            <input type="email" class="form-control" placeholder="nombre@correo.com" name="correo">
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <label for="correo">Contraseña <span class="text-muted">(Obligatorio)</span></label>
+                <input type="password" class="form-control" placeholder="" name="clave">
+            </div>
+
+            <div class="col-12 col-sm-6">
+                <label for="correo">Repita Contraseña <span class="text-muted">(Obligatorio)</span></label>
+                <input type="password" class="form-control" placeholder="" name="clave">
+            </div>
+        </div>
+        <hr class="mb-4">
+        <input type="submit" value="Registrar" class="btn btn-block btn-lg btn-danger">
+        <br>
+    </form>
+{% endblock %}

@@ -3,49 +3,28 @@
     <link rel="stylesheet" href="{% static 'core/css/flexboxgrid.min.css'%}">
     <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
     <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/lightbox.css' %}">
 
 {% block  content %}   
     <!-- CONTENIDO -->
-    <section class="main">
-        <div class="row box-search">
-
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria">
-                <img src="{% static 'core/img/proyect1.jpg' %}" alt="Galeria-#1">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <a href="{% static 'core/img/depto1.jpg'%}" data-lightbox="galeria" data-title="Prueba 1"> <img src="{% static 'core/img/depto1.jpg'%}" class="tamano_img" alt="Logo"></a>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/casa2.jpg' %}" alt="Galeria-#2">
+            <div class="col-md-4">
+                <a href="{% static 'core/img/depto2.jpg'%}" data-lightbox="galeria" data-title="Prueba 2"> <img src="{% static 'core/img/depto2.jpg'%}" class="tamano_img" alt="Logo"></a>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/casa3.jpg' %}" alt="Galeria-#3">
+            <div class="col-md-4">
+                <a href="{% static 'core/img/depto1.jpg'%}" data-lightbox="galeria" data-title="Prueba 3"> <img src="{% static 'core/img/depto1.jpg'%}" class="tamano_img" alt="Logo"></a>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/casa4.jpg' %}" alt="Galeria-#4">
+            <div class="col-md-4">
+                <a href="{% static 'core/img/depto1.jpg'%}" data-lightbox="galeria" data-title="Prueba 4"> <img src="{% static 'core/img/depto1.jpg'%}" class="tamano_img" alt="Logo"></a>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/depto2.jpg' %}" alt="Galeria-#5">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria">
-                <img src="{% static 'core/img/terr3.jpg' %}" alt="Galeria-#6">
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/terr2.jpg' %}" alt="Galeria-#7">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/terr4.jpg' %}" alt="Galeria-#8">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/dpto2.jpg' %}" alt="Galeria-#9">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/dpto3.jpg' %}" alt="Galeria-#10">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/dpto4.jpg' %}" alt="Galeria-#11">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria">
-                <img src="{% static 'core/img/terr1.jpg' %}" alt="Galeria-#12">
+            <div class="col-md-4">
+                <a href="{% static 'core/img/depto1.jpg'%}" data-lightbox="galeria" data-title="Prueba 5" class="tamano_img"> <img src="{% static 'core/img/depto1.jpg'%}" class="tamano_img" alt="Logo"></a>
             </div>
         </div>
-    </section>    
+    </div>
+    
 {% endblock content %}

@@ -30,11 +30,11 @@ class CasasListView(ListView):
     template_name = "core/casa_list.html"
     paginate_by = 6
 
-@method_decorator(login_required(login_url='admin:login') ,name = 'dispatch' )
+@method_decorator(login_required(login_url='login') ,name = 'dispatch' )
 class CasasDetailView(DetailView):
     model = Casa
 
-@method_decorator(staff_member_required, name = 'dispatch')
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class CasasCreate(CreateView):
     model = Casa
     fields = [
@@ -56,7 +56,7 @@ class CasasCreate(CreateView):
     ]
     success_url = reverse_lazy('casas')
 
-@method_decorator(staff_member_required, name = 'dispatch')
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class CasasUpdate(UpdateView):
     model = Casa
     fields = [
@@ -81,7 +81,7 @@ class CasasUpdate(UpdateView):
     def get_success_url(self):
         return reverse_lazy('casa_update',args=[self.object.id]) + '?ok'
 
-@method_decorator(staff_member_required, name = 'dispatch')
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class CasasDelete(DeleteView):
     model = Casa
     success_url = reverse_lazy('casas')
@@ -95,7 +95,7 @@ class DepartamentoListView(ListView):
 class DepartamentoDetailView(DetailView):
     model = Departamento
 
-@method_decorator(staff_member_required, name = 'dispatch')
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class DepartamentoCreate(CreateView):
     model = Departamento
     fields = [
@@ -117,7 +117,7 @@ class DepartamentoCreate(CreateView):
     ]
     success_url = reverse_lazy('deptos')
 
-@method_decorator(staff_member_required, name = 'dispatch')
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class DepartamentoUpdate(UpdateView):
     model = Departamento
     fields = [
@@ -142,7 +142,7 @@ class DepartamentoUpdate(UpdateView):
     def get_success_url(self):
         return reverse_lazy('depto_update',args=[self.object.id]) + '?ok'
 
-@method_decorator(staff_member_required, name = 'dispatch')
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class DepartamentoDelete(DeleteView):
     model = Departamento
     success_url = reverse_lazy('deptos')
@@ -156,7 +156,7 @@ class TerrenosListView(ListView):
 class TerrenosDetailView(DetailView):
     model = Terreno
 
-@method_decorator(staff_member_required, name = 'dispatch')
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class TerrenosCreate(CreateView):
     model = Terreno
     fields = [
@@ -175,7 +175,7 @@ class TerrenosCreate(CreateView):
     ]
     success_url = reverse_lazy('terrenos')
 
-@method_decorator(staff_member_required, name = 'dispatch')
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class TerrenosUpdate(UpdateView):
     model = Terreno
     fields = [
@@ -197,11 +197,10 @@ class TerrenosUpdate(UpdateView):
     def get_success_url(self):
         return reverse_lazy('terreno_update',args=[self.object.id]) + '?ok'
 
-@method_decorator(staff_member_required, name = 'dispatch')
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class TerrenosDelete(DeleteView):
     model = Terreno
     success_url = reverse_lazy('terrenos')
-
 
 class ContactoPageView(TemplateView):
     template_name = "core/contacto.html"
@@ -211,6 +210,9 @@ class GaleriaPageView(TemplateView):
 
 class QuienesSomosPageView(TemplateView):
     template_name = "core/quienes-somos.html"
+
+class RegistroPageView(TemplateView):
+    template_name = "core/registro.html"
     
 class IndexPageView(TemplateView):
 
