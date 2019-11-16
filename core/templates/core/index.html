@@ -7,11 +7,11 @@
 {% block carrusel %}    
     <div id="carousel-1" class="carousel slide carousel-fade" data-ride="carousel">
 
-        {% comment %} <ol class="carousel-indicators">
+       <ol class="carousel-indicators">
             <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-1" data-slide-to="1"></li>
             <li data-target="#carousel-1" data-slide-to="2"></li>
-        </ol> {% endcomment %}
+        </ol> 
 
         <div class="carousel-inner" role="listbox">
 
@@ -52,14 +52,8 @@
         </a>
 {% endblock carrusel %}
 
-{% comment %} {%  block destacados %}
-    <br>
-    <h2>Propiedades Destacadas</h2>
-    <hr>
-{%endblock%} {% endcomment %}
-
 {% block content%}
-    <div class = "col-sm-12">
+    <div class = "col-sm-12 titulos_dest">
         <br>
         <h2>Casas</h2>
         <hr>           
@@ -74,9 +68,9 @@
                     <img src="{{casa.imagen.url}}" class="card-img-top tamano_img" alt="">
                                 
                     <div class="card-body">
-                        <h2 class="card-text">{{ casa.titulo|linebreaksbr }}</h2>
+                        <h2 class="card-text">{{ casa.titulo|linebreaksbr }}<small> - {{ casa.ciudad }}</small></h2>
+                        <p class="card-text">Precio: ${{ casa.precio }}</p>
                         <p class="card-text">Dirección: {{ casa.direccion }}</p>
-                        <p class="card-text">Ciudad: {{ casa.ciudad }}</p>
                         <p class="card-text">Habitaciones: {{ casa.cant_habitaciones }}</p>
                         <p class="card-text">Baños: {{ casa.cant_baños }}</p>
                         <p class="card-text">Metros2: {{ casa.metros_2 }}</p>
@@ -131,7 +125,7 @@
         {% endif %}            
     </div>
 
-    <div class = "col-sm-12">
+    <div class = "col-sm-12 titulos_dest">
         <br>
         <h2>Departamentos</h2>
         <hr>           
@@ -144,10 +138,10 @@
                 <div class="card mb-4">
                     <img src="{{depto.imagen.url}}" class="card-img-top tamano_img" alt="">
                     <div class="card-body">
-                        <h2 class="card-text">{{ depto.titulo|linebreaksbr }}</h2>
-                        <p class="card-text">Dirección: {{ depto.direccion }}</p>
+                        <h2 class="card-text">{{ depto.titulo|linebreaksbr }}<small> - {{ depto.ciudad }}</small></h2>
+                        <p class="card-text">Precio: ${{ depto.precio }}</p>
                         <p class="card-text">Piso N°: {{ depto.num_piso }}</p>
-                        <p class="card-text">Ciudad: {{ depto.ciudad }}</p>
+                        <p class="card-text">Dirección: {{ depto.direccion }}</p>
                         <p class="card-text">Habitaciones: {{ depto.cant_habitaciones }}</p>
                         <p class="card-text">Baños: {{ depto.cant_baños }}</p>
                         <p class="card-text">Metros2: {{ depto.metros_2 }}</p>
@@ -166,7 +160,7 @@
         {% endif %}
     {% endfor %}  
 
-    <div class = "col-sm-12">
+    <div class = "col-sm-12 titulos_dest">
         <br>
         <h2>Terrenos</h2>
         <hr>           
@@ -179,9 +173,9 @@
                 <div class="card mb-4">
                     <img src="{{terre.imagen.url}}" class="card-img-top tamano_img" alt="">
                     <div class="card-body">
-                        <h2 class="card-text">{{ terre.titulo|linebreaksbr }}</h2>
+                        <h2 class="card-text">{{ terre.titulo|linebreaksbr }}<small> - {{ terre.ciudad }}</small></h2>
+                        <p class="card-text">Precio: ${{ terre.precio }}</p>
                         <p class="card-text">Dirección: {{ terre.direccion }}</p>
-                        <p class="card-text">Ciudad: {{ terre.ciudad }}</p>
                         <p class="card-text">Metros2: {{ terre.metros_2 }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">

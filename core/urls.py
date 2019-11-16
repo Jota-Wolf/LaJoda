@@ -2,7 +2,7 @@ from django.urls import path
 from .views import CasasListView,CasasDetailView,CasasCreate,CasasUpdate,CasasDelete
 from .views import DepartamentoListView,DepartamentoDetailView,DepartamentoCreate,DepartamentoUpdate,DepartamentoDelete
 from .views import TerrenosListView,TerrenosDetailView,TerrenosCreate,TerrenosUpdate,TerrenosDelete
-from .views import QuienesSomosPageView,GaleriaPageView,ContactoPageView,IndexPageView,RegistroPageView
+from .views import QuienesSomosPageView,GaleriaPageView,ContactoPageView,IndexPageView
 
 urlpatterns = [
     
@@ -25,7 +25,6 @@ urlpatterns = [
     path("contacto/", ContactoPageView.as_view(), name="contacto"),
     path("galeria/", GaleriaPageView.as_view(), name="galeria"),
     path("quienes-somos/", QuienesSomosPageView.as_view(), name="quienes_somos"),
-    path("registro/", RegistroPageView.as_view(), name="registro"),
 
 ]
 

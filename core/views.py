@@ -211,9 +211,6 @@ class GaleriaPageView(TemplateView):
 class QuienesSomosPageView(TemplateView):
     template_name = "core/quienes-somos.html"
 
-class RegistroPageView(TemplateView):
-    template_name = "core/registro.html"
-    
 class IndexPageView(TemplateView):
 
     template_name = "core/index.html"

@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/flexboxgrid.min.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
+
+{% load crispy_forms_tags %}
+
+{% block content %} 
+    <form action="" method="post">{% csrf_token %}
+        <div id="tit_form">
+            <h1>Registro de Usuario</h1>
+        </div>
+        {{form|crispy}}
+        <br>
+        <input type="submit" value="Registrar" class="btn btn-block btn-lg btn-danger">
+        <br>
+    </form>
+{% endblock %}

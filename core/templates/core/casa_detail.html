@@ -42,10 +42,11 @@
             <p>{{ casa.descripcion|linebreaksbr }}</p>
             <h3 class="my-3">Caracteristicas:</h3>
             <ul>
+                <li>Precio: $ {{ casa.precio }}</li>
                 <li>Dirección: {{ casa.direccion }}</li>
                 <li>Habitaciones: {{ casa.cant_habitaciones }}</li>
                 <li>Baños: {{ casa.cant_baños }}</li>
-                <li>Metros2: {{ casa.metros_2 }}</li>
+                <li>Superficie: {{ casa.metros_2 }}m²</li>
                 <li>{% if casa.patio is True %}
                     <p class="">Patio: Si</p>
                     {% else %}

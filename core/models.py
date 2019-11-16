@@ -26,7 +26,7 @@ class Casa(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    autor = models.ForeignKey(Cliente,on_delete=models.CASCADE)
+    autor = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='Casas')
@@ -63,7 +63,7 @@ class Departamento(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    autor = models.ForeignKey(Cliente,on_delete=models.CASCADE)
+    autor = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='Departamentos')
@@ -100,7 +100,7 @@ class Terreno(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    autor = models.ForeignKey(Cliente,on_delete=models.CASCADE)
+    autor = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='Terrenos')
