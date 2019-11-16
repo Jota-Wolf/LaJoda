@@ -6,29 +6,18 @@
     <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
 
 {% block content %} 
-    {% if 'register' in request.GET %}
-        <div class = 'col-xs-12 text-center'>
-            <h5>Usuario registrado correctamente, ya puedes identificarte!</h5>
+    <div class="col-12">
+        <div class="d-flex justify-content-center">          
+            <form class="prop_detail mt-3 mb-5 p-4 bg-dark"  action="" method="post">{% csrf_token %}                
+                <h1>Bienvenido</h1>
+                <hr>
+                <input type="text" class="form-control" placeholder="Usuario" name="username">
+                <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                <br>
+                <input type="submit" value="Entrar" class="btn btn-block btn-lg btn-danger">
+                <hr>
+                <p><small>¿Haz olvidado tu contraseña?, presiona <a href="{% url 'password_reset' %}"><strong>aquí</strong></a> para restaurarla</small></p>    
+            </form>           
         </div>
-    {% endif  %}
-    <form action="" method="post">{% csrf_token %}
-        <div id="tit_form">
-            <h1>Bienvenido</h1>
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Usuario" name="username">
-        </div>
-
-        <div class="mb-3">
-            <input type="password" class="form-control" placeholder="Contraseña" name="password">
-        </div>
-        <br>
-        <input type="submit" value="Entrar" class="btn btn-block btn-lg btn-danger">
-        <br>
-        <p>
-        ¿Ha olvidado su contraseña?, presione <a href="{% url 'password_reset' %}">aquí</a> para restaurar
-        </p>    
-    </form>
-    
-
+    </div>
 {% endblock %} 

@@ -26,25 +26,24 @@
 {% endblock submenu_galeria %}
 
 {% block content %}
-    <main role="main">
-        <div class="container">
-            <div class="row mt-3">
-                <div class="col-md-9 mx-auto">
-                    <div>
-                        {% if 'ok' in request.GET %}
-                            <p> {{galeria.titulo}} editada correctamente</p>
-                            <a href="{% url 'galeria' %}" >Haz clic aqui para ver el resultado</a>
-                        {% endif %}
-                            <form action="" method="post"  enctype='multipart/form-data'>{% csrf_token %}
-                                <table>
-                                    {{form|crispy}}
-                                </table>
-                                <br>
-                                <input type="submit" value="Modificar Foto" class="btn btn-primary"/>
-                            </form>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                {% if 'ok' in request.GET %}
+                <p>{{galeria.titulo}} editada correctamente, haz clic <a href="{% url 'galeria' %}"><strong>aquí</strong></a>  para ver el resultado.</p>
+                {% endif %}
             </div>
+            <div class="col-12">
+                <div class="d-flex justify-content-center">
+                    <form class="prop_detail mt-3 mb-5 p-4 bg-dark" action="" method="post"  enctype='multipart/form-data'>{% csrf_token %}
+                        <h1>Actualizar foto</h1>
+                        <hr>
+                        {{form|crispy}}            
+                        <hr>
+                        <input type="submit" value="Actualizar foto" class="btn btn-primary mt-2"/>
+                    </form>   
+                </div>
+            </div> 
         </div>
-    </main>
+    </div>
 {% endblock %}

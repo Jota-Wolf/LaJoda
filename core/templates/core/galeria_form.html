@@ -25,22 +25,20 @@
     {% endif %}
 {% endblock submenu_galeria %}
 
-{% block content %}
-  <main role="main">
-    <div class="container">
-      <div class="row mt-3">
-        <div class="col-md-9 mx-auto">
-          <div>
-              <form action="" method="post"  enctype='multipart/form-data'>{% csrf_token %}
-                  <table>
-                    {{form|crispy}}
-                  </table>
-                  <br>
-                  <input type="submit" value="Subir Foto" class="btn btn-primary"/>
-              </form>
-          </div>
+{% block content %} 
+  <div class="container">
+    <div class="row ">
+      <div class="col-12 ">
+        <div class="d-flex justify-content-center">
+          <form class="prop_detail mt-3 mb-5 p-4 bg-dark" action="" method="post"  enctype='multipart/form-data'>{% csrf_token %}
+            <h1>Subir foto a la galeria</h1>
+            <hr>
+            {{form|crispy}}                
+            <hr>
+            <input type="submit" value="Subir foto" class="btn btn-primary mt-2"/>
+          </form>
         </div>
       </div>
     </div>
-  </main>
+  </div> 
 {% endblock %}

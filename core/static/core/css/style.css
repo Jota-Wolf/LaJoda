@@ -90,20 +90,18 @@
     }
     /* ---------------------------------------------- */
     /*Formulario*/
-    
-    .formulario {
+    /* .formulario {
         margin-top: 20px;
         margin-bottom: 20px;
     }
-    
-    form {
+     */
+    /* form {
         width: 400px;
         margin: auto;
         padding: 10px 20px;
         box-sizing: border-box;
-    }
-    
-    #tit_form {
+    } */
+    /* #tit_form {
         text-align: center;
         color: #161616;
         margin-bottom: 20px;
@@ -114,7 +112,7 @@
         margin-top: 10px;
         margin-bottom: 10px;
         font-size: 40px;
-    }
+    } */
     
     input,
     textarea {
@@ -164,8 +162,8 @@
     }
     
     .carousel_title {
-        opacity: 80%;
-        color: #e6e3e3;
+        opacity: 90%;
+        color: #221f1f;
         opacity: 75%;
     }
     

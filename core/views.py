@@ -6,6 +6,7 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.core.paginator import Paginator
 from django.utils import timezone
 from django.urls import reverse_lazy
 from .models import Casa
@@ -26,12 +27,29 @@ from .models import  Galeria
 ############################################################################
 
 #CRUD CASAS 
-class CasasListView(ListView):
-    model = Casa
-    template_name = "core/casa_list.html"
-    paginate_by = 6
+#class CasasListView(ListView):
+    #model = Casa
+    #template_name = "core/casa_list.html"
+    #paginate_by = 6
+def CasasList(request):
+    
+    filter = request.GET.get('filter')
 
-@method_decorator(login_required(login_url='login') ,name = 'dispatch' )
+    if filter:
+        casas = Casa.objects.filter(tipo_contacto=filter)
+
+    else:
+        casas = Casa.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        
+        paginator = Paginator(casas, 2)
+
+        page = request.GET.get('page')
+        casas = paginator.get_page(page)
+
+    return render(request, 'core/casa_list.html', {'casas':casas})
+       
+
+#@method_decorator(login_required(login_url='login') ,name = 'dispatch' )
 class CasasDetailView(DetailView):
     model = Casa
 
@@ -88,10 +106,27 @@ class CasasDelete(DeleteView):
     success_url = reverse_lazy('casas')
 
 #CRUD DEPARTAMENTOS 
-class DepartamentoListView(ListView):
-    model = Departamento
-    template_name = "core/departamento_list.html"
-    paginate_by = 6
+#class DepartamentoListView(ListView):
+    #model = Departamento
+    #template_name = "core/departamento_list.html"
+    #paginate_by = 6
+
+def DepartamentoList(request):
+    
+    filter = request.GET.get('filter')
+
+    if filter:
+        deptos = Departamento.objects.filter(tipo_contacto=filter)
+
+    else:
+        deptos = Departamento.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        
+        paginator = Paginator(deptos, 2)
+
+        page = request.GET.get('page')
+        deptos = paginator.get_page(page)
+
+    return render(request, 'core/departamento_list.html', {'deptos':deptos})
 
 class DepartamentoDetailView(DetailView):
     model = Departamento
@@ -149,10 +184,27 @@ class DepartamentoDelete(DeleteView):
     success_url = reverse_lazy('deptos')
 
 #CRUD TERRENOS 
-class TerrenosListView(ListView):
-    model = Terreno
-    template_name = "core/terreno_list.html"
-    paginate_by = 6
+#class TerrenosListView(ListView):
+    #model = Terreno
+    #template_name = "core/terreno_list.html"
+    #paginate_by = 6
+
+def TerrenosList(request):
+    
+    filter = request.GET.get('filter')
+
+    if filter:
+        terres = Terreno.objects.filter(tipo_contacto=filter)
+
+    else:
+        terres = Terreno.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        
+        paginator = Paginator(terres, 2)
+
+        page = request.GET.get('page')
+        terres = paginator.get_page(page)
+
+    return render(request, 'core/terreno_list.html', {'terres':terres})
 
 class TerrenosDetailView(DetailView):
     model = Terreno
