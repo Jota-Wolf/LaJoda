@@ -11,6 +11,7 @@ from django.urls import reverse_lazy
 from .models import Casa
 from .models import Departamento
 from .models import Terreno
+from .models import  Galeria
 # Create your views here.
 
 # mixim para poder redireccionar la pagina si el usuario no esta
@@ -202,11 +203,48 @@ class TerrenosDelete(DeleteView):
     model = Terreno
     success_url = reverse_lazy('terrenos')
 
+#CRUD GALERIA
+
+class GaleriaListView(ListView):
+    model = Galeria
+    template_name = "core/galeria_list.html"
+    paginate_by = 9
+
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
+class GaleriaCreate(CreateView):
+    model = Galeria
+    fields = [
+        'titulo',
+        'imagen',
+        'created_date',
+        'published_date',
+    ]
+    success_url = reverse_lazy('galeria')
+
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
+class GaleriaUpdate(UpdateView):
+    model = Galeria
+    fields = [
+        'titulo',
+        'imagen',
+        'created_date',
+        'published_date',
+    ]
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return reverse_lazy('galeria_update', args=[self.object.id]) + '?ok'
+
+@method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
+class GaleriaDelete(DeleteView):
+    model = Galeria
+    success_url = reverse_lazy('galeria')
+
+    #---------FIN GALERIA--------------
+
+
 class ContactoPageView(TemplateView):
     template_name = "core/contacto.html"
-
-class GaleriaPageView(TemplateView):
-    template_name = "core/galeria.html"
 
 class QuienesSomosPageView(TemplateView):
     template_name = "core/quienes-somos.html"
@@ -221,7 +259,7 @@ class IndexPageView(TemplateView):
         terres = Terreno.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
         return render(request, self.template_name, {'casas': casas,'deptos': deptos,'terres': terres})
 
-    
+
 
 
 

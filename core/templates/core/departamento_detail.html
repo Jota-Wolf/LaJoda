@@ -30,30 +30,33 @@
 {% endblock submenu %}
 
 {% block  content %}
+    <div class="prop_detail bg-dark mt-3 mb-3">
+        <h1 class="my-4 ml-4">{{ departamento.titulo|linebreaksbr }} <small> - {{ departamento.ciudad }}</small></h1>
 
-    <h1 class="my-4">{{ departamento.titulo|linebreaksbr }} <small> - {{ departamento.ciudad }}</small></h1>
+        <div class="row">
 
-    <div class="row">
+            <div class="col-md-8 mb-4 ml-3 mr-3">
+            <img class="img-fluid tamano_detail" src="{{departamento.imagen.url}}" alt="">
+            </div>
 
-        <div class="col-md-8">
-        <img class="img-fluid tamano_detail mb-5" src="{{departamento.imagen.url}}" alt="">
-        </div>
-
-        <div class="col-md-3 ml-3">
-        <h3 class="my-3">Descripción:</h3>
-        <p>{{ departamento.descripcion|linebreaksbr }}</p>
-        <h3 class="my-3">Caracteristicas:</h3>
-        <ul>
-            <li>Precio: $ {{ departamento.precio }}</li>
-            <li>Dirección: {{ departamento.direccion }}</li>
-            <li>Habitaciones: {{ departamento.cant_habitaciones }}</li>
-            <li>Baños: {{ departamento.cant_baños }}</li>
-            <li>Metros2: {{ departamento.metros_2 }}</li>
-        </ul>
-        {% if request.user.is_staff %}
-                <a href="{% url 'depto_update' departamento.id %}" class="btn btn-sm btn-primary">Editar</a>
-                <a href="{% url 'depto_delete' departamento.id %}" class="btn btn-sm btn-danger">Eliminar</a>    
-        {% endif %}
+            <div class="col-md-3 ml-3 mr-3">
+            <h3 class="my-3">Descripción:</h3>
+            <p>{{ departamento.descripcion|linebreaksbr }}</p>
+            <h3 class="my-3">Caracteristicas:</h3>
+            <ul>
+                <li>Precio: $ {{ departamento.precio }}</li>
+                <li>Dirección: {{ departamento.direccion }}</li>
+                <li>Habitaciones: {{ departamento.cant_habitaciones }}</li>
+                <li>Baños: {{ departamento.cant_baños }}</li>
+                <li>Metros2: {{ departamento.metros_2 }}</li>
+            </ul>
+            {% if request.user.is_staff %}
+                <div class="mb-4 mt-2">
+                    <a href="{% url 'depto_update' departamento.id %}" class="btn btn-sm btn-primary">Editar</a>
+                    <a href="{% url 'depto_delete' departamento.id %}" class="btn btn-sm btn-danger">Eliminar</a>    
+                </div>
+            {% endif %}
+            </div>
         </div>
     </div>
 {% endblock content %}

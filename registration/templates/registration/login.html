@@ -16,19 +16,17 @@
             <h1>Bienvenido</h1>
         </div>
         <div class="mb-3">
-            <label for="username">Usuario</label>
-            <input type="text" class="form-control" placeholder="" name="username">
+            <input type="text" class="form-control" placeholder="Usuario" name="username">
         </div>
 
         <div class="mb-3">
-            <label for="password">Contraseña</label>
-            <input type="password" class="form-control" placeholder="" name="password">
+            <input type="password" class="form-control" placeholder="Contraseña" name="password">
         </div>
         <br>
         <input type="submit" value="Entrar" class="btn btn-block btn-lg btn-danger">
         <br>
         <p>
-        ¿Ha olvidado su contraseña? Presione <a href="{% url 'password_reset' %}">Aquí</a> para Restaurar
+        ¿Ha olvidado su contraseña?, presione <a href="{% url 'password_reset' %}">aquí</a> para restaurar
         </p>    
     </form>
     

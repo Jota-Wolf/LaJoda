@@ -34,15 +34,14 @@
       <div class="col-md-9 mx-auto">
         <div>
         {% if 'ok' in request.GET %}
-          <p> {{departamento}} editada correctamente</p>
-          <a href="{% url 'depto' departamento.id %}" >Haz clic aqui para ver el resultado</a>
+          <p> {{departamento}} editada correctamente, haz clic <a href="{% url 'depto' departamento.id %}" >aquí</a>  para ver el resultado.</p>
         {% endif %}
             <form action="" method="post"  enctype='multipart/form-data'>{% csrf_token %}
                 <table>
                     {{form|crispy}}
                 </table>
                 <br>
-                <input type="submit" value="Modificar Departamento" class="btn-primary"/>
+                <input type="submit" value="Modificar Departamento" class="btn btn-primary"/>
             </form>
         </div>
       </div>

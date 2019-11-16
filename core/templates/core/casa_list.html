@@ -56,13 +56,8 @@
                                 <a href="{% url 'casa_delete' casa.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>    
                             {% endif %}
 						</div>
-                        {% if not request.user.is_staff %}
-                            <small class="text-muted">{{ casa.published_date }}</small>
-                        {% endif %}
 					</div>
-                    {% if  request.user.is_staff %}
-                        <small class="text-muted">{{ casa.published_date }}</small>
-                    {% endif %}
+                        <small class="text-muted">{{ casa.published_date }}</small>   
 				</div>
 			</div>
 		</div>
