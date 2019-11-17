@@ -28,25 +28,24 @@
 {% endblock submenu %}
 
 {% block content %}
-<main role="main">
   <div class="container">
-    <div class="row mt-3">
-      <div class="col-md-9 mx-auto">
-        <div>
+    <div class="row">
+      <div class="d-flex justify-content-center">
         {% if 'ok' in request.GET %}
-          <p> {{departamento}} editada correctamente</p>
-          <a href="{% url 'depto' departamento.id %}" >Haz clic aqui para ver el resultado</a>
+          <p>{{departamento}} editada correctamente, haz clic <a href="{% url 'depto' departamento.id %}"><strong>aquí</strong></a>  para ver el resultado.</p>
         {% endif %}
-            <form action="" method="post"  enctype='multipart/form-data'>{% csrf_token %}
-                <table>
-                    {{form|crispy}}
-                </table>
-                <br>
-                <input type="submit" value="Modificar Departamento" class="btn-primary"/>
-            </form>
-        </div>
       </div>
+      <div class="col-12">
+        <div class="d-flex justify-content-center">
+          <form class="prop_detail mt-3 mb-5 p-4 bg-dark" action="" method="post"  enctype='multipart/form-data'>{% csrf_token %}
+            <h1>Actualizar Departamento</h1>
+            <hr>
+            {{form|crispy}}            
+            <hr>
+            <input type="submit" value="Actualizar Departamento" class="btn btn-primary mt-2"/>
+          </form>   
+        </div>
+      </div> 
     </div>
   </div>
-</main>
 {% endblock %}

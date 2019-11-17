@@ -3,49 +3,46 @@
     <link rel="stylesheet" href="{% static 'core/css/flexboxgrid.min.css'%}">
     <link rel="stylesheet" href="{% static 'core/css/style.css'%}">
     <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'core/css/lightbox.css' %}">
 
 {% block  content %}   
     <!-- CONTENIDO -->
-    <section class="main">
-        <div class="row box-search">
-
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria">
-                <img src="{% static 'core/img/proyect1.jpg' %}" alt="Galeria-#1">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/casa2.jpg' %}" alt="Galeria-#2">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/casa3.jpg' %}" alt="Galeria-#3">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/casa4.jpg' %}" alt="Galeria-#4">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/depto2.jpg' %}" alt="Galeria-#5">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria">
-                <img src="{% static 'core/img/terr3.jpg' %}" alt="Galeria-#6">
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/terr2.jpg' %}" alt="Galeria-#7">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/terr4.jpg' %}" alt="Galeria-#8">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/dpto2.jpg' %}" alt="Galeria-#9">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/dpto3.jpg' %}" alt="Galeria-#10">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria ">
-                <img src="{% static 'core/img/dpto4.jpg' %}" alt="Galeria-#11">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 galeria">
-                <img src="{% static 'core/img/terr1.jpg' %}" alt="Galeria-#12">
+      <div class="container">
+        <div class="joda_galeria">
+            <div class="row mt-2 mb-5">
+                <div class="col-md-4 col-sm-6 mb-2">
+                    <div class="card">
+                        <a href="{% static 'core/img/casa4.jpg'%}"> <img src="{% static 'core/img/casa4.jpg'%}"  class="card-img-top tamano_img" alt="Logo"></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-2">
+                    <div class="card">
+                        <a href="{% static 'core/img/casa2.jpg'%}"> <img src="{% static 'core/img/casa2.jpg'%}"  class="card-img-top tamano_img" alt="Logo"></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-2">
+                    <div class="card">
+                        <a href="{% static 'core/img/casa3.jpg'%}"> <img src="{% static 'core/img/casa3.jpg'%}"  class="card-img-top tamano_img" alt="Logo"></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-2">
+                    <div class="card">
+                        <a href="{% static 'core/img/casa8.jpg'%}"> <img src="{% static 'core/img/casa8.jpg'%}"  class="card-img-top tamano_img" alt="Logo"></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-2">
+                    <div class="card">
+                        <a href="{% static 'core/img/depto2.jpg'%}"> <img src="{% static 'core/img/depto2.jpg'%}"  class="card-img-top tamano_img" alt="Logo"></a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-2">
+                    <div class="card">
+                        <a href="{% static 'core/img/dpto3.jpg'%}"> <img src="{% static 'core/img/dpto3.jpg'%}"  class="card-img-top tamano_img" alt="Logo"></a>
+                    </div>
+                </div>
+               
             </div>
         </div>
-    </section>    
+    </div>
+    
 {% endblock content %}

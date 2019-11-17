@@ -7,18 +7,18 @@
 {% block carrusel %}    
     <div id="carousel-1" class="carousel slide carousel-fade" data-ride="carousel">
 
-        {% comment %} <ol class="carousel-indicators">
+       <ol class="carousel-indicators">
             <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-1" data-slide-to="1"></li>
             <li data-target="#carousel-1" data-slide-to="2"></li>
-        </ol> {% endcomment %}
+        </ol> 
 
         <div class="carousel-inner" role="listbox">
 
             <div class="carousel-item active">
                 <img src="{% static 'core/img/2a.jpg' %}" class="d-block w-100" alt="1">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Venta y Arriendo de Casas</h3>
+                    <h3 class="carousel_title  bg-light  ">Venta y Arriendo de Casas</h3>
 
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <div class="carousel-item">
                 <img src="{% static 'core/img/3a.jpg' %}" class="d-block w-100" alt="2">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Arriendo de Departamentos </h3>
+                    <h3 class="carousel_title bg-light ">Venta y Arriendo de Deptos </h3>
 
                 </div>
             </div>
@@ -34,7 +34,7 @@
             <div class="carousel-item">
                 <img src="{% static 'core/img/4a.jpg' %}" class="d-block w-100" alt="3">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Terrenos en Venta</h3>
+                    <h3 class="carousel_title bg-light ">Venta de Terrenos</h3>
 
                 </div>
             </div>
@@ -52,29 +52,25 @@
         </a>
 {% endblock carrusel %}
 
-{% comment %} {%  block destacados %}
-    <br>
-    <h2>Propiedades Destacadas</h2>
-    <hr>
-{%endblock%} {% endcomment %}
-
 {% block content%}
-    <div class = "col-sm-12">
+    <div class = "col-sm-12 titulos_dest">
         <br>
-        <h2>Casas</h2>
+        <h2 class="destacado bg-light d-none d-sm-none d-md-block">Casas destacadas</h2>
+        <h2 class="destacado bg-light d-block d-sm-block d-md-none">Casas</h2>
         <hr>           
     </div>
    
     {% for casa in casas %}
         {% if casa.destacado %}
 
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-2 col-md-3">
                 <div class="card mb-4">
                     
                     <img src="{{casa.imagen.url}}" class="card-img-top tamano_img" alt="">
                                 
                     <div class="card-body">
-                        <h2 class="card-text">{{ casa.titulo|linebreaksbr }}</h2>
+                        <h5 class="card-text"><b>{{ casa.titulo|linebreaksbr }}</b></h5>
+                        <p class="card-text">Precio: ${{ casa.precio }}</p>
                         <p class="card-text">Dirección: {{ casa.direccion }}</p>
                         <p class="card-text">Ciudad: {{ casa.ciudad }}</p>
                         <p class="card-text">Habitaciones: {{ casa.cant_habitaciones }}</p>
@@ -88,10 +84,11 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="{% url 'casa' casa.id %}" class="btn btn-sm btn-outline-secondary">Ver Más</a>
-                                <button class="btn btn-sm btn-outline-secondary">{{casa.tipo_contacto}}</button>
+                                <a href="{% url 'contacto'  %}"class="btn btn-sm btn-outline-secondary">{{casa.tipo_contacto}}</a>
                             </div>
-                            <small class="text-muted">{{ casa.published_date }}</small>
+                            
                         </div>
+                        <small class="text-muted">{{ casa.published_date }}</small>
                     </div>
                 </div>
 		    </div>
@@ -99,55 +96,25 @@
         {% endif %}
     {% endfor %}
 
-    <div class = "col-sm-12">
-        {% if is_paginated %}
-            <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center">
-                {% if page_obj.has_previous %}
-                    <li class="page-item ">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
-                    </li>
-                {% else %}
-                    <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-                    </li>
-                {% endif %}
-                {% for i in paginator.page_range %}
-                    <li class="page-item {% if page_obj.number == i %}active{% endif %}">
-                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
-                    </li>
-                {% endfor %}
-                {% if page_obj.has_next %}
-                    <li class="page-item ">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
-                    </li>
-                {% else %}
-                    <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">&raquo;</a>
-                    </li>
-                {% endif %}
-                </ul>
-            </nav>
-        {% endif %}            
-    </div>
-
-    <div class = "col-sm-12">
+    <div class = "col-sm-12 titulos_dest">
         <br>
-        <h2>Departamentos</h2>
+        <h2 class="destacado bg-light d-none d-sm-none d-md-block">Departamentos destacadas</h2>
+        <h2 class="destacado bg-light d-block d-sm-block d-md-none">Deptos</h2>
         <hr>           
     </div>
 
     {% for depto in deptos %}
         {% if depto.destacado %}
 
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-2 col-md-3">
                 <div class="card mb-4">
                     <img src="{{depto.imagen.url}}" class="card-img-top tamano_img" alt="">
                     <div class="card-body">
-                        <h2 class="card-text">{{ depto.titulo|linebreaksbr }}</h2>
+                        <h5 class="card-text"><b>{{ depto.titulo|linebreaksbr }}</b></h5>
+                        <p class="card-text">Precio: ${{ depto.precio }}</p>
                         <p class="card-text">Dirección: {{ depto.direccion }}</p>
-                        <p class="card-text">Piso N°: {{ depto.num_piso }}</p>
                         <p class="card-text">Ciudad: {{ depto.ciudad }}</p>
+                        <p class="card-text">Piso N°: {{ depto.num_piso }}</p>
                         <p class="card-text">Habitaciones: {{ depto.cant_habitaciones }}</p>
                         <p class="card-text">Baños: {{ depto.cant_baños }}</p>
                         <p class="card-text">Metros2: {{ depto.metros_2 }}</p>
@@ -155,10 +122,11 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="{% url 'depto' depto.id %}" class="btn btn-sm btn-outline-secondary">Ver Más</a>
-                                <button class="btn btn-sm btn-outline-secondary">{{depto.tipo_contacto}}</button>
+                                <a href="{% url 'contacto'  %}" class="btn btn-sm btn-outline-secondary">{{depto.tipo_contacto}}</a>
                             </div>
-                            <small class="text-muted">{{ depto.published_date }}</small>
+                            
                         </div>
+                        <small class="text-muted">{{ depto.published_date }}</small>
                     </div>
                 </div>
             </div>
@@ -166,30 +134,33 @@
         {% endif %}
     {% endfor %}  
 
-    <div class = "col-sm-12">
+    <div class = "col-sm-12 titulos_dest">
         <br>
-        <h2>Terrenos</h2>
+        <h2 class="destacado bg-light d-none d-sm-none d-md-block">Terrenos destacadas</h2>
+        <h2 class="destacado bg-light d-block d-sm-block d-md-none">Terrenos</h2>
         <hr>           
     </div>
 
     {% for terre in terres %}
         {% if terre.destacado %}
 
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-2 col-md-3">
                 <div class="card mb-4">
                     <img src="{{terre.imagen.url}}" class="card-img-top tamano_img" alt="">
                     <div class="card-body">
-                        <h2 class="card-text">{{ terre.titulo|linebreaksbr }}</h2>
+                        <h5 class="card-text"><b>{{ terre.titulo|linebreaksbr }}</b></h5>
+                        <p class="card-text">Precio: ${{ terre.precio }}</p>
                         <p class="card-text">Dirección: {{ terre.direccion }}</p>
                         <p class="card-text">Ciudad: {{ terre.ciudad }}</p>
                         <p class="card-text">Metros2: {{ terre.metros_2 }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="{% url 'terre' terre.id %}" class="btn btn-sm btn-outline-secondary">Ver Más</a>
-                                <button class="btn btn-sm btn-outline-secondary">{{terre.tipo_contacto}}</button>
+                                <a href="{% url 'contacto'  %}" class="btn btn-sm btn-outline-secondary">{{terre.tipo_contacto}}</a>
                             </div>
-                            <small class="text-muted">{{ terre.published_date }}</small>
+                            
                         </div>
+                        <small class="text-muted">{{ terre.published_date }}</small>
                     </div>
                 </div>
             </div>

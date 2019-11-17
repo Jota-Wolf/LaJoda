@@ -30,17 +30,42 @@
 {% endblock submenu %}
 
 {% block  content %}
+
+    <div class="col-12 prop_detail mt-2 mb-3 p-4 bg-dark">
+        <h4>Filtrar por:</h4><br>
+        <span>Tipo de Contacto:</span>
+        <select id="fil_depto_tipo_contacto" class="form-control mb-2">
+            <option value="">Seleccione </option>
+            <option value="Venta">Venta</option>
+            <option value="Arriendo">Arriendo</option>
+        </select>
+        <span>Cantidad Habitaciones:</span>
+        <select  id="fil_depto_habitaciones" class="form-control mb-2">
+            <option value="">Seleccione </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <a class="btn btn-primary" href="{% url 'deptos' %}">Listar Todos</a>
+    </div>
+    {% if not deptos %}
+            <div class="col-12 prop_detail mt-2 mb-3 p-4 bg-dark ">
+                <h2>No hay Departamentos</h2><br>
+            </div>
+    {% endif %}
    
-    {% for depto in departamento_list %}
+    {% for depto in deptos %}
 
         <div class="col-sm-6 col-md-4 mt-3">
 			<div class="card mb-4">
 				<img src="{{depto.imagen.url}}" class="card-img-top tamano_img" alt="">
 				<div class="card-body">
-					<h2 class="card-text">{{ depto.titulo|linebreaksbr }}</h2>
+					<h5 class="card-text"><b>{{ depto.titulo|linebreaksbr }}</b></h5>
+                    <p class="card-text">Precio: $ {{ depto.precio }}</p>
                     <p class="card-text">Dirección: {{ depto.direccion }}</p>
-                    <p class="card-text">Piso N°: {{ depto.num_piso }}</p>
                     <p class="card-text">Ciudad: {{ depto.ciudad }}</p>
+                    <p class="card-text">Piso N°: {{ depto.num_piso }}</p>
                     <p class="card-text">Habitaciones: {{ depto.cant_habitaciones }}</p>
                     <p class="card-text">Baños: {{ depto.cant_baños }}</p>
                     <p class="card-text">Metros2: {{ depto.metros_2 }}</p>
@@ -48,55 +73,41 @@
 					<div class="d-flex justify-content-between align-items-center">
 						<div class="btn-group">
 							<a href="{% url 'depto' depto.id %}" class="btn btn-sm btn-outline-secondary">Ver Más</a>
-							<button class="btn btn-sm btn-outline-secondary">{{depto.tipo_contacto}}</button>
+							<a href="{% url 'contacto'  %}"  class="btn btn-sm btn-outline-secondary">{{depto.tipo_contacto}}</a>
                             {% if request.user.is_staff %}
                                 <a href="{% url 'depto_update' depto.id %}" class="btn btn-sm btn-outline-primary">Editar</a>
                                 <a href="{% url 'depto_delete' depto.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             {% endif %}
 						</div>
-                        {% if not request.user.is_staff %}
-                            <small class="text-muted">{{ depto.published_date }}</small>
-                        {% endif %}
 					</div>
-                    {% if  request.user.is_staff %}
-                        <small class="text-muted">{{ depto.published_date }}</small>
-                    {% endif %}
+                    <small class="text-muted">{{ depto.published_date }}</small> 
 				</div>
 			</div>
 		</div>
 
     {% endfor %}
 
-	<div class = "col-sm-12">
-        {% if is_paginated %}
-            <nav aria-label="Page navigation">
+	 <div class=" col-12 justify-content-center">
+            <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                {% if page_obj.has_previous %}
-                    <li class="page-item ">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                    {% if deptos.has_previous %}
+                    <li class="page-item">
+                    <a class="page-link" href="?page={{ deptos.previous_page_number }}" tabindex="-1"><i class="fas fa-arrow-left"></i></a>
                     </li>
-                {% else %}
-                    <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-                    </li>
-                {% endif %}
-                {% for i in paginator.page_range %}
-                    <li class="page-item {% if page_obj.number == i %}active{% endif %}">
-                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
-                    </li>
-                {% endfor %}
-                {% if page_obj.has_next %}
-                    <li class="page-item ">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
-                    </li>
-                {% else %}
-                    <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">&raquo;</a>
-                    </li>
-                {% endif %}
+                    {% endif %}
+                    
+                    {% if deptos.paginator.num_pages %}
+                    <li class="page-item disabled"><a class="page-link" href="">{{ deptos.number }}</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="">{{ deptos.paginator.num_pages }}</a></li>
+                    {% endif %}
+                
+                    {% if deptos.has_next %}
+                        <li class="page-item">
+                        <a class="page-link" href="?page={{ deptos.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+                        </li>
+                    {% endif %}
                 </ul>
             </nav>
-        {% endif %}            
-    </div>
+        </div>
 
 {% endblock content %}

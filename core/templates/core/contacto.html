@@ -5,15 +5,17 @@
     <link rel="stylesheet" href="{% static 'core/css/boostrap.min.css'%}">
 
 {% block  content %}
-    <form action="https://formspree.io/lobos.joaquin@hotmail.com" method="post" onsubmit="return validarFormulario()">
-        <div id="tit_form">
-            <h1>Formulario de Contacto</h1>
+    <div class="col-12">
+        <div class="d-flex justify-content-center">
+            <form class="prop_detail mt-3 mb-5 p-4 bg-dark" action="" method="post" onsubmit="return validarFormulario()">                
+                <h1>Formulario de Contacto</h1>
+                <hr>                
+                <input class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre">
+                <input class="form-control" type="text" id="mail" name="correo" placeholder="Correo">
+                <input class="form-control" type="number" id="telefono" name="telefono" placeholder="Teléfono">
+                <textarea class="form-control" name="mensaje" id="mensaje" placeholder="Escriba su mensaje" cols="30" rows="10"></textarea>
+                <input class="btn btn-danger" type="button" value="Enviar">
+            </form>
         </div>
-        <input type="text" id="nombre" name="nombre" placeholder="Ingrese Nombre" onblur="validarNombre();">
-        <input type="text" id="mail" name="correo" placeholder="Ingrese Correo" onblur="validarCorreo();">
-        <input type="number" id="telefono" name="telefono" placeholder="Ingrese Teléfono" onblur="validarTelefono();">
-        <textarea name="mensaje" id="mensaje" placeholder="Escriba su Mensaje" cols="30" rows="10" onblur="validarMensaje();"></textarea>
-        <input class="btn btn-danger" type="submit" value="Enviar">
-    </form>
-
+    </div>
 {% endblock content %}

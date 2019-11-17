@@ -26,7 +26,7 @@ class Casa(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    autor = models.ForeignKey(Cliente,on_delete=models.CASCADE)
+    autor = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='Casas')
@@ -63,12 +63,12 @@ class Departamento(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    autor = models.ForeignKey(Cliente,on_delete=models.CASCADE)
+    autor = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='Departamentos')
     direccion = models.CharField(max_length=200)
-    num_piso = models.IntegerField(max_length=2, blank=False, null=False)
+    num_piso = models.IntegerField(blank=False, null=False)
     ciudad = models.CharField(max_length=200)
     precio = models.DecimalField(max_digits=19, decimal_places=0)
     cant_habitaciones = models.IntegerField(blank=False, null=False)
@@ -100,7 +100,7 @@ class Terreno(models.Model):
     ]
 
     id = models.AutoField(primary_key=True)
-    autor = models.ForeignKey(Cliente,on_delete=models.CASCADE)
+    autor = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='Terrenos')
@@ -116,6 +116,27 @@ class Terreno(models.Model):
     class Meta:
         verbose_name = "Terreno"
         verbose_name_plural = "Terrenos"
+        ordering = ['-created_date']
+        
+    
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.titulo
+
+class Galeria(models.Model):
+
+    id = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length=200)  
+    imagen = models.ImageField(upload_to='Galeria')
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True,default=timezone.now)
+
+    class Meta:
+        verbose_name = "Galeria"
+        verbose_name_plural = "Galerias"
         ordering = ['-created_date']
         
     
