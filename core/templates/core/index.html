@@ -63,7 +63,7 @@
     {% for casa in casas %}
         {% if casa.destacado %}
 
-            <div class="col-sm-2 col-md-3">
+            <div class="col-12 col-sm-6 col-md-3">
                 <div class="card mb-4">
                     
                     <img src="{{casa.imagen.url}}" class="card-img-top tamano_img" alt="">
@@ -106,7 +106,7 @@
     {% for depto in deptos %}
         {% if depto.destacado %}
 
-            <div class="col-sm-2 col-md-3">
+            <div class="col-12 col-sm-6 col-md-3">
                 <div class="card mb-4">
                     <img src="{{depto.imagen.url}}" class="card-img-top tamano_img" alt="">
                     <div class="card-body">
@@ -144,7 +144,7 @@
     {% for terre in terres %}
         {% if terre.destacado %}
 
-            <div class="col-sm-2 col-md-3">
+            <div class="col-12 col-sm-6 col-md-3">
                 <div class="card mb-4">
                     <img src="{{terre.imagen.url}}" class="card-img-top tamano_img" alt="">
                     <div class="card-body">

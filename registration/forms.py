@@ -11,16 +11,16 @@ class defaultForm(UserCreationForm):
         model = User
         fields = ['username','password1','password2','email']
         widgets = {
-            'username': forms.TextInput(attrs={'class':'form-control mb-2 ','placeholder':'Usuario'}),
+            'username': forms.TextInput(attrs={'class':'form-control mb-2 ','placeholder':''}),
             'password1': forms.PasswordInput(attrs={'class':'form-control  mb-2','placeholder':'Contraseña'}),
             'password2': forms.PasswordInput(attrs={'class':'form-control  mb-2','placeholder':'Repita Contraseña'}),
-            'email': forms.EmailInput(attrs={'class':'form-control  mb-2','placeholder':'Correo'}),
+            'email': forms.EmailInput(attrs={'class':'form-control  mb-2','placeholder':'Correo'})
         }
         labels = {
-            'username':'',
+            'username':'Nombre de Usuario',
             'password1': '',
             'password2': '',
-            'email': '',
+            'email': ''
         }
     #metodo para que no se ingresen email que ya se ingresaron previamente
     def clean_email(self):
@@ -35,18 +35,18 @@ class cliForm(forms.ModelForm):
         model = Cliente
         fields = ['correo','nombre','apellido','rut','telefono']
         widgets = {
-            'correo': forms.EmailInput(attrs={'class':'form-control mb-2','placeholder':'Repita Email'}),
-            'nombre': forms.TextInput(attrs={'class':'form-control  mb-2 required','placeholder':'Nombre'}),
-            'apellido': forms.TextInput(attrs={'class':'form-control  mb-2','placeholder':'Apellido'}),
-            'rut': forms.TextInput(attrs={'class':'form-control  mb-2','placeholder':'RUT'}),
-            'telefono': forms.NumberInput(attrs={'class':'form-control  mb-2','placeholder':'Teléfono'}),
+            'correo': forms.EmailInput(attrs={'class':'form-control mb-2','placeholder':''}),
+            'nombre': forms.TextInput(attrs={'class':'form-control  mb-2 required','placeholder':''}),
+            'apellido': forms.TextInput(attrs={'class':'form-control  mb-2','placeholder':''}),
+            'rut': forms.TextInput(attrs={'class':'form-control  mb-2','placeholder':''}),
+            'telefono': forms.NumberInput(attrs={'class':'form-control  mb-2','placeholder':''}),
         }
         labels = {
-            'correo': '',
-            'nombre': '',
-            'apellido': '',
-            'rut': '',
-            'telefono': '',
+            'correo': 'Repita Email',
+            'nombre': 'Nombre',
+            'apellido': 'Apellido',
+            'rut': 'RUT',
+            'telefono': 'Teléfono',
         }
 
 
