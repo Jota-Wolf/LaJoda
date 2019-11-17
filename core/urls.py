@@ -2,7 +2,7 @@ from django.urls import path
 from .views import CasasDetailView,CasasCreate,CasasUpdate,CasasDelete
 from .views import DepartamentoDetailView,DepartamentoCreate,DepartamentoUpdate,DepartamentoDelete
 from .views import TerrenosDetailView,TerrenosCreate,TerrenosUpdate,TerrenosDelete
-from .views import GaleriaListView,GaleriaCreate,GaleriaUpdate,GaleriaDelete
+from .views import GaleriaCreate,GaleriaUpdate,GaleriaDelete
 from .views import QuienesSomosPageView,ContactoPageView,IndexPageView
 from . import views
 
@@ -25,7 +25,7 @@ urlpatterns = [
     path("terrenos/update/<int:pk>/", TerrenosUpdate.as_view(), name="terreno_update"),
     path("terrenos/delete/<int:pk>/", TerrenosDelete.as_view(), name="terreno_delete"),
     path("contacto/", ContactoPageView.as_view(), name="contacto"),
-    path("galeria/", GaleriaListView.as_view(), name="galeria"),
+    path("galeria/", views.GaleriaList, name="galeria"),
     path("galeria/create/", GaleriaCreate.as_view(), name="galeria_new"),
     path("galeria/update/<int:pk>/", GaleriaUpdate.as_view(), name="galeria_update"),
     path("galeria/delete/<int:pk>/", GaleriaDelete.as_view(), name="galeria_delete"),

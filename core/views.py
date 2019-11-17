@@ -33,23 +33,27 @@ from .models import  Galeria
     #paginate_by = 6
 def CasasList(request):
     
-    filter = request.GET.get('filter')
+    filtro_contacto = request.GET.get('filtro_contacto')
+    filtro_habitaciones = request.GET.get('filtro_habitaciones')
 
-    if filter:
-        casas = Casa.objects.filter(tipo_contacto=filter)
+    if filtro_contacto:
+
+        casas = Casa.objects.filter(tipo_contacto=filtro_contacto)
+
+    elif filtro_habitaciones:
+
+        casas = Casa.objects.filter(cant_habitaciones=filtro_habitaciones)
 
     else:
-        casas = Casa.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        casas = Casa.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
         
-        paginator = Paginator(casas, 2)
+        paginator = Paginator(casas, 6)
 
         page = request.GET.get('page')
         casas = paginator.get_page(page)
 
     return render(request, 'core/casa_list.html', {'casas':casas})
        
-
-#@method_decorator(login_required(login_url='login') ,name = 'dispatch' )
 class CasasDetailView(DetailView):
     model = Casa
 
@@ -113,15 +117,21 @@ class CasasDelete(DeleteView):
 
 def DepartamentoList(request):
     
-    filter = request.GET.get('filter')
+    filtro_contacto = request.GET.get('filtro_contacto')
+    filtro_habitaciones = request.GET.get('filtro_habitaciones')
 
-    if filter:
-        deptos = Departamento.objects.filter(tipo_contacto=filter)
+    if filtro_contacto:
+
+        deptos = Departamento.objects.filter(tipo_contacto=filtro_contacto)
+
+    elif filtro_habitaciones:
+
+        deptos = Departamento.objects.filter(cant_habitaciones=filtro_habitaciones)
 
     else:
-        deptos = Departamento.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        deptos = Departamento.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
         
-        paginator = Paginator(deptos, 2)
+        paginator = Paginator(deptos, 6)
 
         page = request.GET.get('page')
         deptos = paginator.get_page(page)
@@ -191,15 +201,21 @@ class DepartamentoDelete(DeleteView):
 
 def TerrenosList(request):
     
-    filter = request.GET.get('filter')
+    filtro_contacto = request.GET.get('filtro_contacto')
+    filtro_ciudad = request.GET.get('filtro_ciudad')
 
-    if filter:
-        terres = Terreno.objects.filter(tipo_contacto=filter)
+    if filtro_contacto:
+
+        terres = Terreno.objects.filter(tipo_contacto=filtro_contacto)
+
+    elif filtro_ciudad:
+
+        terres = Terreno.objects.filter(ciudad__icontains=filtro_ciudad)
 
     else:
-        terres = Terreno.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+        terres = Terreno.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
         
-        paginator = Paginator(terres, 2)
+        paginator = Paginator(terres, 6)
 
         page = request.GET.get('page')
         terres = paginator.get_page(page)
@@ -257,10 +273,21 @@ class TerrenosDelete(DeleteView):
 
 #CRUD GALERIA
 
-class GaleriaListView(ListView):
-    model = Galeria
-    template_name = "core/galeria_list.html"
-    paginate_by = 9
+#class GaleriaListView(ListView):
+    #model = Galeria
+    #template_name = "core/galeria_list.html"
+    #paginate_by = 9
+
+def GaleriaList(request):
+    
+    gale = Galeria.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        
+    paginator = Paginator(gale, 9)
+
+    page = request.GET.get('page')
+    gale = paginator.get_page(page)
+
+    return render(request, 'core/galeria_list.html', {'gale':gale})
 
 @method_decorator(staff_member_required(login_url='login'), name = 'dispatch')
 class GaleriaCreate(CreateView):
@@ -292,9 +319,7 @@ class GaleriaDelete(DeleteView):
     model = Galeria
     success_url = reverse_lazy('galeria')
 
-    #---------FIN GALERIA--------------
-
-
+@method_decorator(login_required(login_url='login') ,name = 'dispatch' )
 class ContactoPageView(TemplateView):
     template_name = "core/contacto.html"
 

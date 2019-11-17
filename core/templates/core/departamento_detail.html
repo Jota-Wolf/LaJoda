@@ -46,10 +46,14 @@
             <ul>
                 <li>Precio: $ {{ departamento.precio }}</li>
                 <li>Dirección: {{ departamento.direccion }}</li>
+                <li>N° de piso: {{ departamento.num_piso }}</li>
                 <li>Habitaciones: {{ departamento.cant_habitaciones }}</li>
                 <li>Baños: {{ departamento.cant_baños }}</li>
                 <li>Metros2: {{ departamento.metros_2 }}</li>
             </ul>
+            <div class="mb-4 mt-2">
+                <a href="{% url 'contacto'  %}"  class="btn btn-sm btn-secondary">{{departamento.tipo_contacto}}</a>  
+            </div>
             {% if request.user.is_staff %}
                 <div class="mb-4 mt-2">
                     <a href="{% url 'depto_update' departamento.id %}" class="btn btn-sm btn-primary">Editar</a>

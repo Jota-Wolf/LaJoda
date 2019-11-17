@@ -31,16 +31,30 @@
 
 {% block  content %}
 
-    <div class="col-12">
-        <span>Filtrar por:</span><br>
+    <div class="col-12 prop_detail mt-2 mb-3 p-4 bg-dark">
+        <h4>Filtrar por:</h4><br>
          <span>Tipo de Contacto:</span>
-        <select name="filter" id="fil_terr_tipo_contacto" class="form-control">
+        <select id="fil_terr_tipo_contacto" class="form-control mb-2">
             <option value="">Seleccione </option>
             <option value="Venta">Venta</option>
             <option value="Arriendo">Arriendo</option>
         </select>
+        <span>Ciudad:</span>
+        <select  id="fil_terr_ciudad" class="form-control mb-2">
+            <option value="">Seleccione </option>
+            <option value="Viña del Mar">Viña del Mar</option>
+            <option value="Valparaiso">Valparaíso</option>
+            <option value="Limache">Limache</option>
+            <option value="Quilpue">Quilpué</option>
+        </select>
         <a class="btn btn-primary" href="{% url 'terrenos' %}">Listar Todos</a>
     </div>  
+
+    {% if not terres %}
+            <div class="col-12 prop_detail mt-2 mb-3 p-4 bg-dark ">
+                <h2>No hay Terrenos</h2><br>
+            </div>
+    {% endif %}
    
     {% for terre in terres %}
 
@@ -48,7 +62,7 @@
 			<div class="card mb-4">
 				<img src="{{terre.imagen.url}}" class="card-img-top tamano_img" alt="">
 				<div class="card-body">
-					<h2 class="card-text">{{ terre.titulo|linebreaksbr }}</h2>
+					<h5 class="card-text"><b>{{ terre.titulo|linebreaksbr }}</b></h5>
                     <p class="card-text">Precio: $ {{ terre.precio }}</p>
                     <p class="card-text">Dirección: {{ terre.direccion }}</p>
                     <p class="card-text">Ciudad: {{ terre.ciudad }}</p>
@@ -56,7 +70,7 @@
 					<div class="d-flex justify-content-between align-items-center">
 						<div class="btn-group">
 							<a href="{% url 'terre' terre.id %}" class="btn btn-sm btn-outline-secondary">Ver Más</a>
-							<button class="btn btn-sm btn-outline-secondary">{{terre.tipo_contacto}}</button>
+							<a href="{% url 'contacto'  %}"  class="btn btn-sm btn-outline-secondary">{{terre.tipo_contacto}}</a>
                             {% if request.user.is_staff %}
                                 <a href="{% url 'terreno_update' terre.id %}" class="btn btn-sm btn-outline-primary">Editar</a>
                                 <a href="{% url 'terreno_delete' terre.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
@@ -70,22 +84,27 @@
 
     {% endfor %}
 
-	<div class="pagination col-12">
-        <span class="step-links">
-            {% if terres.has_previous %}
-                <a href="?page={{ terres.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
-            {% endif %}
+	<div class=" col-12 justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if terres.has_previous %}
+                <li class="page-item">
+                <a class="page-link" href="?page={{ terres.previous_page_number }}" tabindex="-1"><i class="fas fa-arrow-left"></i></a>
+                </li>
+                {% endif %}
+                
+                {% if terres.paginator.num_pages %}
+                <li class="page-item disabled"><a class="page-link" href="">{{ terres.number }}</a></li>
+                <li class="page-item disabled"><a class="page-link" href="">{{ terres.paginator.num_pages }}</a></li>
+                {% endif %}
             
-            {% if terres.paginator.num_pages %}
-            <span class="current">
-                {{ terres.number }} de {{ terres.paginator.num_pages }}
-            </span>
-            {% endif %}
-        
-            {% if terres.has_next %}
-                <a href="?page={{ terres.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
-            {% endif %}
-        </span>
+                {% if terres.has_next %}
+                    <li class="page-item">
+                    <a class="page-link" href="?page={{ terres.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
     </div>
 
 {% endblock content %}

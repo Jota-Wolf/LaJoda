@@ -68,7 +68,7 @@ class Departamento(models.Model):
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='Departamentos')
     direccion = models.CharField(max_length=200)
-    num_piso = models.IntegerField(max_length=2, blank=False, null=False)
+    num_piso = models.IntegerField(blank=False, null=False)
     ciudad = models.CharField(max_length=200)
     precio = models.DecimalField(max_digits=19, decimal_places=0)
     cant_habitaciones = models.IntegerField(blank=False, null=False)
@@ -143,4 +143,7 @@ class Galeria(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
+
+    def __str__(self):
+        return self.titulo
 

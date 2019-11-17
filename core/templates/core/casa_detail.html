@@ -51,8 +51,12 @@
                         <p class="">Patio: Si</p>
                         {% else %}
                         <p class="">Patio: No</p>
-                        {% endif %}</li>
+                        {% endif %}
+                    </li>
                 </ul>
+                <div class="mb-4 mt-2">
+                    <a href="{% url 'contacto'  %}"  class="btn btn-sm btn-secondary">{{casa.tipo_contacto}}</a>  
+                </div>
                 {% if request.user.is_staff %}
                     <div class="mb-4 mt-2">
                     <a href="{% url 'casa_update' casa.id %}" class="btn btn-sm btn-primary">Editar</a>
