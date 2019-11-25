@@ -7,12 +7,14 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator
+from django.core.mail import EmailMessage
 from django.utils import timezone
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
+from .forms import ContactoForm
 from .models import Casa
 from .models import Departamento
 from .models import Terreno
-from .models import  Galeria
+from .models import Galeria
 # Create your views here.
 
 # mixim para poder redireccionar la pagina si el usuario no esta
@@ -319,9 +321,31 @@ class GaleriaDelete(DeleteView):
     model = Galeria
     success_url = reverse_lazy('galeria')
 
-@method_decorator(login_required(login_url='login') ,name = 'dispatch' )
-class ContactoPageView(TemplateView):
-    template_name = "core/contacto.html"
+@login_required(login_url='login')
+def ContactoPage(request):
+    contact_form = ContactoForm()
+
+    if request.method == 'POST':
+        contact_form = ContactoForm(data = request.POST)
+        if contact_form.is_valid():
+            nombre = request.POST.get('nombre','')
+            correo = request.POST.get('correo','')
+            telefono = request.POST.get('telefono','')
+            mensaje = request.POST.get('mensaje','')
+            #enviar el correo
+            email = EmailMessage(
+                'La Joda: Nuevo mensaje de contacto',
+                'De {} <{}> \n\nTelefono:{} \n\n Escribio:\n\n{}'.format(nombre,correo,telefono,mensaje),
+                'no-contestar@hotmail.com',
+                ['lobos.joaquin@hotmail.com','danieldejesusgs@gmail.com'],
+                reply_to=[correo]
+            )
+            try:
+                email.send()
+                return redirect(reverse('contacto') + '?ok')
+            except:
+                return redirect(reverse('contacto') + '?fail')             
+    return render(request, "core/contacto.html",{'form':contact_form})
 
 class QuienesSomosPageView(TemplateView):
     template_name = "core/quienes-somos.html"

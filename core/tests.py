@@ -19,7 +19,7 @@ class GaleriaTestCase(TestCase):
     def setUp(self):
         Galeria.objects.create(id='1',titulo ='kratos',imagen ='GoW-Ending.jpg',created_date ='2019-11-16 16:31:43',published_date='2019-11-16 16:31:43')
 
-    def test_cliente_exists(self):
+    def test_imagen_exists(self):
         existe = Galeria.objects.filter(titulo='kratos').exists()
         self.assertEqual(existe,True)
 
@@ -28,7 +28,7 @@ class UserTestCase(TestCase):
     def setUp(self):
         User.objects.create_user('jota','jota@gmail.com','jota1234')
 
-    def test_cliente_exists(self):
+    def test_user_exists(self):
         existe = User.objects.filter(username='jota').exists()
         self.assertEqual(existe,True)
 

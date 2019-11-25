@@ -40,8 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
     'crispy_forms',
+    'rest_framework',
     
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 8
+}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -132,9 +138,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-if DEBUG:
-    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-    EMAIL_FILE_PATH = os.path.join(BASE_DIR,'sent_emails')
-else:
-    # Aqui hay que configurar un email real para produccion
-    pass
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'jl.lobos.joaquin@gmail.com'
+EMAIL_HOST_PASSWORD = 'lobos.5769'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+USE_THOUSAND_SEPARATOR = True

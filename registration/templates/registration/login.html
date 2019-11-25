@@ -8,15 +8,28 @@
 {% block content %} 
     <div class="col-12">
         <div class="d-flex justify-content-center">          
-            <form class="prop_detail mt-3 mb-5 p-4 bg-dark"  action="" method="post">{% csrf_token %}                
-                <h1>Bienvenido</h1>
+            <form class="prop_detail mt-3 mb-5 p-4 bg-dark"  action="" method="post">{% csrf_token %}
+                <div class="col-12 prop_detail bg-dark ">
+                    <div class="d-flex justify-content-center">
+                        <h1>Bienvenido</h1>
+                    </div>
+                </div>  
+                
+                {% if 'register' in request.GET %}
+                    <p><b>Usuario registrado correctamente !</b></p>
+                {% endif %}
                 <hr>
                 <input type="text" class="form-control" placeholder="Nombre de Usuario" name="username">
                 <input type="password" class="form-control" placeholder="Contraseña" name="password">
                 <br>
                 <input type="submit" value="Entrar" class="btn btn-block btn-lg btn-danger">
                 <hr>
-                <p><small>¿Haz olvidado tu contraseña?, presiona <a href="{% url 'password_reset' %}"><strong>aquí</strong></a> para restaurarla</small></p>    
+                <p><small>¿Haz olvidado tu contraseña?, presiona <a href="{% url 'password_reset' %}"><strong>aquí</strong></a> para restaurarla</small></p>  
+                <hr>
+                {% if not request.user.is_authenticated %}
+                    <p><b>Inicia sesión para contactarnos.</b></p>
+                    <p><b>Si no tienes cuenta registrate <a href="{% url 'registro' %}"><strong>aquí</strong></a></b></p>
+                {% endif %}  
             </form>           
         </div>
     </div>

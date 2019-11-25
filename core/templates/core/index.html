@@ -77,9 +77,9 @@
                         <p class="card-text">Baños: {{ casa.cant_baños }}</p>
                         <p class="card-text">Metros2: {{ casa.metros_2 }}</p>
                         {% if casa.patio is True %}
-                        <p class="card-text">Tiene patio</p>
-                        {% else %}
-                        <p class="card-text">No tiene patio</p>
+                            <p class="card-text">Patio: Si</p>
+                            {% else %}
+                            <p class="card-text">Patio: No</p>
                         {% endif %}
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
